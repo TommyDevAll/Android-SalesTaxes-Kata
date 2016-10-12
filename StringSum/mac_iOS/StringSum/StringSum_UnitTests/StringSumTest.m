@@ -20,12 +20,12 @@
     XCTAssertEqualObjects(sum, @"2");
 }
 
-- (void)test_given_one_non_natural_number {
+- (void)test_given_a_character {
     NSString *sum = [StringSum sum:@"1" with:@"a"];
     XCTAssertEqualObjects(sum, @"1");
 }
 
-- (void)test_given_two_non_natural_numbers {
+- (void)test_given_two_characters {
     NSString *sum = [StringSum sum:@"a" with:@"b"];
     XCTAssertEqualObjects(sum, @"0");
 }
@@ -38,6 +38,11 @@
 - (void)test_given_nil_values {
     NSString *sum = [StringSum sum:nil with:nil];
     XCTAssertEqualObjects(sum, @"0");
+}
+
+- (void)test_given_decimal_values {
+    NSString *sum = [StringSum sum:@"1.5" with:@"2"];
+    XCTAssertEqualObjects(sum, @"2");
 }
 
 

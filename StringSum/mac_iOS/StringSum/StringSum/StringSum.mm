@@ -20,7 +20,7 @@
 }
 
 + (BOOL)isNaturalNumber:(NSString *)value {
-    NSRange range = [value rangeOfString:@"[0-9]" options:NSRegularExpressionSearch];
+    NSRange range = [value rangeOfString:@"^[0-9]+$" options:NSRegularExpressionSearch];
     return range.location != NSNotFound;
 }
 
