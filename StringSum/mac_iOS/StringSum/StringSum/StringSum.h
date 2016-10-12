@@ -7,5 +7,5 @@
 
 
 @interface StringSum : NSObject
-+ (NSString *)sum:(NSString *)string with:(NSString *)with;
++ (NSString *)sum:(NSString *)first with:(NSString *)second;
 @end

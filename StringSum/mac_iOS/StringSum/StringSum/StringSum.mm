@@ -8,8 +8,8 @@
 
 @implementation StringSum
 
-+ (NSString *)sum:(NSString *)string with:(NSString *)with {
-    int sum = [self naturalNumberToInt:string] + [self naturalNumberToInt:with];
++ (NSString *)sum:(NSString *)first with:(NSString *)second {
+    int sum = [self naturalNumberToInt:first] + [self naturalNumberToInt:second];
     return [NSString stringWithFormat:@"%d", sum];
 }
 
