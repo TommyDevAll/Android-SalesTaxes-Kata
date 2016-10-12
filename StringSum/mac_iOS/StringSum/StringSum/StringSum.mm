@@ -14,7 +14,7 @@
 }
 
 + (int)naturalNumberToInt:(NSString *)value {
-    if([StringSum isNaturalNumber:value])
+    if([self isNaturalNumber:value])
         return [value intValue];
     return 0;
 }

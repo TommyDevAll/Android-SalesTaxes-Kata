@@ -15,7 +15,7 @@
 
 @implementation StringSumTest
 
-- (void)test_given_two_natural_number {
+- (void)test_given_two_natural_numbers {
     NSString *sum = [StringSum sum:@"1" with:@"1"];
     XCTAssertEqualObjects(sum, @"2");
 }
@@ -25,7 +25,7 @@
     XCTAssertEqualObjects(sum, @"1");
 }
 
-- (void)test_given_two_non_natural_number {
+- (void)test_given_two_non_natural_numbers {
     NSString *sum = [StringSum sum:@"a" with:@"b"];
     XCTAssertEqualObjects(sum, @"0");
 }
