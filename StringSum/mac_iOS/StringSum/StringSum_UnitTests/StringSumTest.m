@@ -15,19 +15,30 @@
 
 @implementation StringSumTest
 
-- (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
-
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
 - (void)test_given_two_natural_number {
     NSString *sum = [StringSum sum:@"1" with:@"1"];
     XCTAssertEqualObjects(sum, @"2");
 }
+
+- (void)test_given_one_non_natural_number {
+    NSString *sum = [StringSum sum:@"1" with:@"a"];
+    XCTAssertEqualObjects(sum, @"1");
+}
+
+- (void)test_given_two_non_natural_number {
+    NSString *sum = [StringSum sum:@"a" with:@"b"];
+    XCTAssertEqualObjects(sum, @"0");
+}
+
+- (void)test_given_empty_values {
+    NSString *sum = [StringSum sum:@"" with:@""];
+    XCTAssertEqualObjects(sum, @"0");
+}
+
+- (void)test_given_nil_values {
+    NSString *sum = [StringSum sum:nil with:nil];
+    XCTAssertEqualObjects(sum, @"0");
+}
+
 
 @end

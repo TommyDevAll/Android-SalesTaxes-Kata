@@ -7,9 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "StringSum.h"
 
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *firstNumberTextField;
+@property (weak, nonatomic) IBOutlet UITextField *secondNumberTextField;
+@property (weak, nonatomic) IBOutlet UITextField *resultNumberTextField;
 
 @end
 
@@ -17,13 +21,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.firstNumberTextField.text = @"50";
+    self.secondNumberTextField.text = @"50";
+    [self calculate];
 }
 
+- (IBAction)onSumButtonPressed:(id)sender {
+    [self calculate];
+}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)calculate {
+    NSString *first = self.firstNumberTextField.text;
+    NSString *second = self.secondNumberTextField.text;
+    self.resultNumberTextField.text = [StringSum sum:first with:second];
 }
 
 

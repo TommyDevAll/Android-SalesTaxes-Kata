@@ -9,7 +9,19 @@
 @implementation StringSum
 
 + (NSString *)sum:(NSString *)string with:(NSString *)with {
-  return @"2";
+    int sum = [self naturalNumberToInt:string] + [self naturalNumberToInt:with];
+    return [NSString stringWithFormat:@"%d", sum];
+}
+
++ (int)naturalNumberToInt:(NSString *)value {
+    if([StringSum isNaturalNumber:value])
+        return [value intValue];
+    return 0;
+}
+
++ (BOOL)isNaturalNumber:(NSString *)string {
+    NSRange range = [string rangeOfString:@"[0-9]" options:NSRegularExpressionSearch];
+    return range.location != NSNotFound;
 }
 
 @end

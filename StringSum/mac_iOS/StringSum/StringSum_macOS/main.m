@@ -7,11 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StringSum.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+
+        NSString *first = @"100";
+        NSString *second = @"22";
+        NSString *sum = [StringSum sum:first with:second];
+
+        NSLog(@"%@ + %@ = %@", first, second, sum);
     }
 
     return 0;
