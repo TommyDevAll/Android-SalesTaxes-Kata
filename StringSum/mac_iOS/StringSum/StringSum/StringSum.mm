@@ -19,8 +19,8 @@
     return 0;
 }
 
-+ (BOOL)isNaturalNumber:(NSString *)string {
-    NSRange range = [string rangeOfString:@"[0-9]" options:NSRegularExpressionSearch];
++ (BOOL)isNaturalNumber:(NSString *)value {
+    NSRange range = [value rangeOfString:@"[0-9]" options:NSRegularExpressionSearch];
     return range.location != NSNotFound;
 }
 
