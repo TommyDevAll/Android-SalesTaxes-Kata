@@ -21,12 +21,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.firstNumberTextField.text = @"50";
-    self.secondNumberTextField.text = @"50";
+    [self initializeExample];
+
+    [self registerForTextChanges:self.firstNumberTextField];
+    [self registerForTextChanges:self.secondNumberTextField];
+}
+- (void)registerForTextChanges:(UITextField *)textField {
+    [textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+}
+
+- (void)textFieldDidChange:(id)textFieldDidChange {
     [self calculate];
 }
 
-- (IBAction)onSumButtonPressed:(id)sender {
+- (void)initializeExample {
+    self.firstNumberTextField.text = @"50";
+    self.secondNumberTextField.text = @"50";
     [self calculate];
 }
 
@@ -35,6 +45,9 @@
     NSString *second = self.secondNumberTextField.text;
     self.resultNumberTextField.text = [StringSum sum:first with:second];
 }
+
+#pragma mark - UITextFieldDelegate
+
 
 
 @end

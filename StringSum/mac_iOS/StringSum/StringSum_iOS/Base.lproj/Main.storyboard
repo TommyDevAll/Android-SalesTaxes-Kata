@@ -45,32 +45,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3V-ys-aRe">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="7hI-cr-yTX"/>
-                                </constraints>
-                                <state key="normal" title="SUM!"/>
-                                <connections>
-                                    <action selector="onSumButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ozw-or-4Dh"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="c3V-ys-aRe" firstAttribute="centerY" secondItem="iI9-6P-7nc" secondAttribute="centerY" id="0MX-LV-BWv"/>
                             <constraint firstItem="pee-8y-a0Q" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="0Xg-o2-DrP"/>
-                            <constraint firstItem="c3V-ys-aRe" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="0iB-WF-Qii"/>
                             <constraint firstItem="j5y-10-HQU" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="29U-hW-APm"/>
                             <constraint firstItem="j5y-10-HQU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="2D3-JI-fap"/>
                             <constraint firstItem="Pmu-fZ-2LM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="BxF-Ug-AVc"/>
                             <constraint firstItem="Pmu-fZ-2LM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="13" id="Cl4-Df-RrH"/>
-                            <constraint firstItem="c3V-ys-aRe" firstAttribute="leading" secondItem="iI9-6P-7nc" secondAttribute="trailing" constant="8" id="Jak-dr-C0u"/>
                             <constraint firstItem="iI9-6P-7nc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Mff-qA-fBu"/>
                             <constraint firstItem="hom-lg-zhL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Nwn-mj-Z6c"/>
                             <constraint firstItem="j5y-10-HQU" firstAttribute="top" secondItem="hom-lg-zhL" secondAttribute="bottom" constant="8" id="OTC-OH-Uo1"/>
                             <constraint firstItem="iI9-6P-7nc" firstAttribute="top" secondItem="j5y-10-HQU" secondAttribute="bottom" constant="22" id="eSF-f5-fUU"/>
                             <constraint firstItem="pee-8y-a0Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ieD-7b-Omh"/>
                             <constraint firstItem="pee-8y-a0Q" firstAttribute="top" secondItem="Pmu-fZ-2LM" secondAttribute="bottom" constant="8" id="jXj-Vb-Py8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iI9-6P-7nc" secondAttribute="trailing" id="mhc-LD-I7l"/>
                             <constraint firstItem="hom-lg-zhL" firstAttribute="top" secondItem="pee-8y-a0Q" secondAttribute="bottom" constant="20" id="zlz-lH-34c"/>
                         </constraints>
                     </view>
