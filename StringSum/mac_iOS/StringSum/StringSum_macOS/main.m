@@ -1,6 +1,6 @@
 //
 //  main.m
-//  StringSum
+//  StringSum_macOS
 //
 //  Created by Tommaso Resti on 12/10/16.
 //  Copyright (c) 2016 Tommaso Resti. All rights reserved.
