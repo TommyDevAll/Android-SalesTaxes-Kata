@@ -1,4 +1,7 @@
 package it.tommasoresti.salestaxes.domain.item;
 
-public class Item {
+public abstract class Item {
+
+    public abstract ItemType getType();
+
 }
