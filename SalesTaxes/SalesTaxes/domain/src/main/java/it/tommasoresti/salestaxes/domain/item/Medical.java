@@ -1,12 +1,12 @@
 package it.tommasoresti.salestaxes.domain.item;
 
-public class Food extends Item {
-    public Food(String description) {
+public class Medical extends Item {
+    public Medical(String description) {
         super(description);
     }
 
     @Override
     public ItemType getType() {
-        return ItemType.FOOD;
+        return ItemType.MEDICAL;
     }
 }

@@ -4,6 +4,7 @@ public class Imported extends Item {
     private Item item;
 
     public Imported(Item item) {
+        super("Imported "+ item.getDescription());
         this.item = item;
     }
 
