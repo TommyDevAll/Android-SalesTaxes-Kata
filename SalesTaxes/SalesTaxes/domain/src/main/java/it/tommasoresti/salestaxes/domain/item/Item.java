@@ -1,6 +1,6 @@
 package it.tommasoresti.salestaxes.domain.item;
 
-public abstract class Item {
+public abstract class Item extends Article{
 
     private String description;
 
@@ -8,9 +8,11 @@ public abstract class Item {
         this.description = description;
     }
 
-    public abstract ItemType getType();
-
     public String getDescription() {
         return description;
+    }
+
+    public Item getItem() {
+        return this;
     }
 }

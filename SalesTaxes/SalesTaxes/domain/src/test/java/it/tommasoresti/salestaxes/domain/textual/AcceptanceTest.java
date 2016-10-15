@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import it.tommasoresti.salestaxes.domain.DefaultTaxesRuleRepository;
 import it.tommasoresti.salestaxes.domain.SalesTaxes;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -16,7 +17,7 @@ public class AcceptanceTest {
 
     @Before
     public void setUp() throws Exception {
-        salesTaxes = new TextualSalesTaxes(new SalesTaxes());
+        salesTaxes = new TextualSalesTaxes(new SalesTaxes(new DefaultTaxesRuleRepository()));
     }
 
     @Test

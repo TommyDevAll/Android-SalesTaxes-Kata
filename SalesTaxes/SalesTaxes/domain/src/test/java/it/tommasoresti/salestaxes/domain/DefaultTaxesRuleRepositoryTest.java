@@ -10,30 +10,30 @@ import it.tommasoresti.salestaxes.domain.item.Other;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class TaxesRuleTest {
+public class DefaultTaxesRuleRepositoryTest {
 
-    private TaxesRule taxesRule;
+    private DefaultTaxesRuleRepository taxesRuleRepository;
 
     @Before
     public void setUp() throws Exception {
-        taxesRule = new TaxesRule();
+        taxesRuleRepository = new DefaultTaxesRuleRepository();
     }
 
     @Test
     public void given_a_food() throws Exception {
-        float taxes = taxesRule.of(new Food("chocolate bar"));
+        float taxes = taxesRuleRepository.of(new Food("chocolate bar"));
         assertThat(taxes, is(0f));
     }
 
     @Test
     public void given_a_perfume() throws Exception {
-        float taxes = taxesRule.of(new Other("perfume"));
+        float taxes = taxesRuleRepository.of(new Other("perfume"));
         assertThat(taxes, is(10f));
     }
 
     @Test
     public void given_an_imported_perfume() throws Exception {
-        float taxes = taxesRule.of(new Imported(new Other("perfume")));
+        float taxes = taxesRuleRepository.of(new Imported(new Other("perfume")));
         assertThat(taxes, is(15f));
     }
 }

@@ -3,16 +3,16 @@ package it.tommasoresti.salestaxes.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.tommasoresti.salestaxes.domain.item.Item;
+import it.tommasoresti.salestaxes.domain.item.Article;
 
 public class Cart {
-    private List<Item> items = new ArrayList<>();
+    private List<Article> articles = new ArrayList<>();
 
-    public void addItem(Item item) {
-        this.items.add(item);
+    public void addArticle(Article item) {
+        this.articles.add(item);
     }
 
-    public List<Item> getItems() {
-        return items;
+    public List<Article> getArticles() {
+        return articles;
     }
 }
