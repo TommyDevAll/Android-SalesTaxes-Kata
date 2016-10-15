@@ -1,4 +1,4 @@
-package it.tommasoresti.salestaxes.domain.item;
+package it.tommasoresti.salestaxes.domain.article;
 
 public class Imported extends Article {
     private Item item;

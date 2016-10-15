@@ -3,9 +3,9 @@ package it.tommasoresti.salestaxes.domain;
 import org.junit.Before;
 import org.junit.Test;
 
-import it.tommasoresti.salestaxes.domain.item.Food;
-import it.tommasoresti.salestaxes.domain.item.Imported;
-import it.tommasoresti.salestaxes.domain.item.Other;
+import it.tommasoresti.salestaxes.domain.article.Food;
+import it.tommasoresti.salestaxes.domain.article.Imported;
+import it.tommasoresti.salestaxes.domain.article.Other;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;

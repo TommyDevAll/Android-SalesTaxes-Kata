@@ -5,11 +5,11 @@ import org.junit.Test;
 
 import java.util.Collections;
 
-import it.tommasoresti.salestaxes.domain.item.Article;
-import it.tommasoresti.salestaxes.domain.item.Book;
-import it.tommasoresti.salestaxes.domain.item.Food;
-import it.tommasoresti.salestaxes.domain.item.Imported;
-import it.tommasoresti.salestaxes.domain.item.Other;
+import it.tommasoresti.salestaxes.domain.article.Article;
+import it.tommasoresti.salestaxes.domain.article.Book;
+import it.tommasoresti.salestaxes.domain.article.Food;
+import it.tommasoresti.salestaxes.domain.article.Imported;
+import it.tommasoresti.salestaxes.domain.article.Other;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;

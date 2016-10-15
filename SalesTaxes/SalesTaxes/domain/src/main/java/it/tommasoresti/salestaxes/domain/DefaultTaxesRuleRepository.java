@@ -3,9 +3,9 @@ package it.tommasoresti.salestaxes.domain;
 import java.util.HashMap;
 import java.util.Map;
 
-import it.tommasoresti.salestaxes.domain.item.Article;
-import it.tommasoresti.salestaxes.domain.item.Imported;
-import it.tommasoresti.salestaxes.domain.item.Other;
+import it.tommasoresti.salestaxes.domain.article.Article;
+import it.tommasoresti.salestaxes.domain.article.Imported;
+import it.tommasoresti.salestaxes.domain.article.Other;
 
 public class DefaultTaxesRuleRepository implements TaxesRuleRepository {
 
@@ -22,11 +22,9 @@ public class DefaultTaxesRuleRepository implements TaxesRuleRepository {
         return getTaxesOf(article);
     }
 
-    private static float getTaxesOf(Article item) {
-        TaxRule taxRule = rulesMap.get(item.getClass());
-        if(taxRule != null)
-            return taxRule.getTaxesOf(item);
-        return 0;
+    private static float getTaxesOf(Article article) {
+        TaxRule taxRule = rulesMap.get(article.getClass());
+        return (taxRule != null)? taxRule.getTaxesOf(article): 0;
     }
 
     private interface TaxRule {

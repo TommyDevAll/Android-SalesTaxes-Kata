@@ -1,4 +1,4 @@
-package it.tommasoresti.salestaxes.domain.item;
+package it.tommasoresti.salestaxes.domain.article;
 
 public class Other extends Item {
     public Other(String description) {
