@@ -26,24 +26,13 @@ public class Receipt {
         taxedArticles.add(taxedArticle);
     }
 
-    private float percentageOf(Article article, float taxes) {
-        return article.getPrice() * taxes / 100;
-    }
-
     private void updateTaxesPaidWith(TaxedArticle taxedArticle) {
-        taxesPaid += percentageOf(taxedArticle.article, taxedArticle.taxes);
+        Article article = taxedArticle.getArticle();
+        taxesPaid += taxedArticle.getFinalPrice() - article.getPrice();
     }
 
     private void updateTotalWith(TaxedArticle taxedArticle) {
-        total += taxedArticle.article.getPrice() + percentageOf(taxedArticle.article, taxedArticle.taxes);
+        total += taxedArticle.getFinalPrice();
     }
 
-    private class TaxedArticle {
-        Article article;
-        float taxes;
-        TaxedArticle(Article article, float taxes) {
-            this.article = article;
-            this.taxes = taxes;
-        }
-    }
 }
