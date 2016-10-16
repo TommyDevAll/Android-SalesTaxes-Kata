@@ -5,17 +5,24 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import it.tommasoresti.salestaxes.domain.article.Article;
+
+import static it.tommasoresti.salestaxes.domain.textual.TextualArticleFactory.PRODUCT_REGEX_PATTERN;
+
 public class TextualCartFactory {
-    private static final String PRODUCT_REGEX_PATTERN = "(\\d*) (\\D*) at (\\d*\\.\\d{2})";
-    public List<String> make(String articles) {
-        List<String> products = new ArrayList<>();
 
+    private final TextualArticleFactory textualArticleFactory;
+
+    public TextualCartFactory() {
+        textualArticleFactory = new TextualArticleFactory();
+    }
+
+    public List<Article> make(String articles) {
+        List<Article> products = new ArrayList<>();
         Matcher matcher = Pattern.compile(PRODUCT_REGEX_PATTERN).matcher(articles);
-
         while (hasNextProduct(matcher)) {
-            System.out.println(matcher.group(0));
+            products.add(textualArticleFactory.make(matcher.group(0)));
         }
-
         return products;
     }
 

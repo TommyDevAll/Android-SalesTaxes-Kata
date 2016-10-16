@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import it.tommasoresti.salestaxes.domain.article.Book;
 import it.tommasoresti.salestaxes.domain.article.Food;
+import it.tommasoresti.salestaxes.domain.article.Imported;
 import it.tommasoresti.salestaxes.domain.article.Medical;
 import it.tommasoresti.salestaxes.domain.article.Other;
 
@@ -42,5 +43,11 @@ public class TextualArticleFactoryTest {
     public void given_a_music_cd() throws Exception {
         String article = "1 Music CD at 10.00";
         assertThat(textualArticleFactory.make(article), instanceOf(Other.class));
+    }
+
+    @Test
+    public void given_an_imported_chocolate_bar() throws Exception {
+        String article = "1 imported chocolate bar at 10.00";
+        assertThat(textualArticleFactory.make(article), instanceOf(Imported.class));
     }
 }
