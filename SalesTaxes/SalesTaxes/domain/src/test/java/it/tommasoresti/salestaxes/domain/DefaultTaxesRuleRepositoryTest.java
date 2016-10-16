@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import it.tommasoresti.salestaxes.domain.article.Food;
 import it.tommasoresti.salestaxes.domain.article.Imported;
+import it.tommasoresti.salestaxes.domain.article.Medical;
 import it.tommasoresti.salestaxes.domain.article.Other;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -35,5 +36,11 @@ public class DefaultTaxesRuleRepositoryTest {
     public void given_an_imported_perfume() throws Exception {
         float taxes = taxesRuleRepository.of(new Imported(new Other("perfume")));
         assertThat(taxes, is(15f));
+    }
+
+    @Test
+    public void given_an_imported_box_of_headache_pills() throws Exception {
+        float taxes = taxesRuleRepository.of(new Imported(new Medical("box of headache pills")));
+        assertThat(taxes, is(5f));
     }
 }
