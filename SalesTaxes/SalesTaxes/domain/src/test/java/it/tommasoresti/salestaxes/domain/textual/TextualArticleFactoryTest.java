@@ -3,6 +3,7 @@ package it.tommasoresti.salestaxes.domain.textual;
 import org.junit.Before;
 import org.junit.Test;
 
+import it.tommasoresti.salestaxes.domain.article.Article;
 import it.tommasoresti.salestaxes.domain.article.Book;
 import it.tommasoresti.salestaxes.domain.article.Food;
 import it.tommasoresti.salestaxes.domain.article.Imported;
@@ -10,6 +11,7 @@ import it.tommasoresti.salestaxes.domain.article.Medical;
 import it.tommasoresti.salestaxes.domain.article.Other;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class TextualArticleFactoryTest {
@@ -23,8 +25,10 @@ public class TextualArticleFactoryTest {
 
     @Test
     public void given_a_chocolate_bar() throws Exception {
-        String article = "1 chocolate bar at 0.85";
-        assertThat(textualArticleFactory.make(article), instanceOf(Food.class));
+        String articleString = "1 chocolate bar at 0.85";
+        Article article = textualArticleFactory.make(articleString);
+        assertThat(article, instanceOf(Food.class));
+        assertThat(article.getPrice(), is(0.85f));
     }
 
     @Test

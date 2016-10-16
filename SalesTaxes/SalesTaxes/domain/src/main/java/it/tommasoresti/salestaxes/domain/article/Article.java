@@ -8,4 +8,8 @@ public abstract class Article {
     public void setPrice(float price) {
         this.price = price;
     }
+
+    public float getPrice() {
+        return price;
+    }
 }
