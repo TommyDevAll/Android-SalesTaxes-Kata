@@ -9,6 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import it.tommasoresti.salestaxes.domain.article.Article;
+import it.tommasoresti.salestaxes.domain.article.Book;
 import it.tommasoresti.salestaxes.domain.article.Food;
 import it.tommasoresti.salestaxes.domain.article.Item;
 import it.tommasoresti.salestaxes.domain.article.Medical;
@@ -22,29 +23,27 @@ public class TextualArticleFactory {
     private static Map<Class<? extends Item>, List<String>> categoryPatterns = new HashMap<Class<? extends Item>, List<String>>() {{
         put(Food.class, singletonList("chocolate"));
         put(Medical.class, singletonList("pills"));
+        put(Book.class, singletonList("book"));
     }};
 
     public Article make(String articleString) {
         Article article = null;
-
         Matcher matcher = Pattern.compile(PRODUCT_REGEX_PATTERN).matcher(articleString);
-
         while (hasNextProduct(matcher)) {
-            int quantity = Integer.parseInt(matcher.group(1));
             String description = matcher.group(2);
             float price = Float.parseFloat(matcher.group(3));
-
             Class<? extends Item> itemType = findItemType(description, categoryPatterns);
-            article = createNewItemByType(article, description, itemType);
+            article = createNewItemByType(itemType, description, price);
         }
-
         return article;
     }
 
-    private Article createNewItemByType(Article article, String description, Class<? extends Item> itemType) {
+    private Article createNewItemByType(Class<? extends Item> itemType, String description, float price) {
+        Item item = null;
         try {
             Constructor<? extends Item> constructor = itemType.getConstructor(String.class);
-            article = constructor.newInstance(description);
+            item = constructor.newInstance(description);
+            item.setPrice(price);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -54,7 +53,7 @@ public class TextualArticleFactory {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-        return article;
+        return item;
     }
 
     private Class<? extends Item> findItemType(String description, Map<Class<? extends Item>, List<String>> categoryPatterns) {
