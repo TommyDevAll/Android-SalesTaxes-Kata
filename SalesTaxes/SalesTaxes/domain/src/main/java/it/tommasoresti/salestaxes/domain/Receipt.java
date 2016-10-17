@@ -35,4 +35,7 @@ public class Receipt {
         total += taxedArticle.getFinalPrice();
     }
 
+    public List<TaxedArticle> getArticles() {
+        return taxedArticles;
+    }
 }

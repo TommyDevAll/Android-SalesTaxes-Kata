@@ -2,10 +2,12 @@ package it.tommasoresti.salestaxes.domain;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import it.tommasoresti.salestaxes.domain.article.Food;
 import it.tommasoresti.salestaxes.domain.article.Medical;
-import it.tommasoresti.salestaxes.domain.article.Other;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -29,6 +31,9 @@ public class ReceiptTest {
 
         receipt.addArticleWithTaxes(new Food(""), 10);
         receipt.addArticleWithTaxes(new Medical(""), 10);
-        receipt.addArticleWithTaxes(new Other(""), 10);
+
+        List<TaxedArticle> articles = receipt.getArticles();
+        assertThat(articles.get(0).getArticle(), instanceOf(Food.class));
+        assertThat(articles.get(1).getTaxesPercentage(), is(10f));
     }
 }
