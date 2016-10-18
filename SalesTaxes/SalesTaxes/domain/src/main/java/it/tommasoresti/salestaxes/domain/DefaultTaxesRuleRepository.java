@@ -19,10 +19,10 @@ public class DefaultTaxesRuleRepository implements TaxesRuleRepository {
 
     @Override
     public float of(Article article) {
-        return getTaxesOf(article);
+        return calculate(article);
     }
 
-    private static float getTaxesOf(Article article) {
+    private static float calculate(Article article) {
         TaxRule taxRule = rulesMap.get(article.getClass());
         return (taxRule != null)? taxRule.getTaxesOf(article): 0;
     }
@@ -39,7 +39,7 @@ public class DefaultTaxesRuleRepository implements TaxesRuleRepository {
 
     private static class ImportedTaxRule implements TaxRule {
         public float getTaxesOf(Article item) {
-            return IMPORTED_ARTICLES_TAXES + DefaultTaxesRuleRepository.getTaxesOf(item.getItem());
+            return IMPORTED_ARTICLES_TAXES + calculate(item.getItem());
         }
     }
 }
