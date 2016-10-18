@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
+import it.tommasoresti.salestaxes.domain.ArticleFactory;
 import it.tommasoresti.salestaxes.domain.article.Article;
 import it.tommasoresti.salestaxes.domain.article.Book;
 import it.tommasoresti.salestaxes.domain.article.Food;
@@ -18,22 +18,16 @@ import it.tommasoresti.salestaxes.domain.article.Other;
 
 import static java.util.Collections.singletonList;
 
-public class TextualArticleFactory {
-    public static final String PRODUCT_REGEX_PATTERN = "(\\d*) (\\D*) at (\\d*\\.\\d{2})";
-
+public class TextualArticleFactory implements ArticleFactory {
     private static Map<Class<? extends Item>, List<String>> categoryPatterns = new HashMap<Class<? extends Item>, List<String>>() {{
         put(Food.class, singletonList("chocolate"));
         put(Medical.class, singletonList("pills"));
         put(Book.class, singletonList("book"));
     }};
 
-    public Article make(String articleString) {
-        Article article = null;
-        Matcher matcher = Pattern.compile(PRODUCT_REGEX_PATTERN).matcher(articleString);
-        if(articleHasBeenFound(matcher)) {
-            article = createArticleWithDescriptionAndPrice(matcher.group(2), Float.parseFloat(matcher.group(3)));
-        }
-        return article;
+    @Override
+    public Article make(String description, float price) {
+        return createArticleWithDescriptionAndPrice(description, price);
     }
 
     private Article createArticleWithDescriptionAndPrice(String description, float price) {

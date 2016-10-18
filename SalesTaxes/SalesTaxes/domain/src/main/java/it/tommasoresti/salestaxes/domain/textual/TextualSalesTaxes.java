@@ -8,7 +8,7 @@ class TextualSalesTaxes {
 
     public TextualSalesTaxes(SalesTaxes salesTaxes) {
         this.salesTaxes = salesTaxes;
-        splitter = new TextualCartFactory();
+        splitter = new TextualCartFactory(new TextualArticleFactory());
     }
 
     public String of(String cart) {

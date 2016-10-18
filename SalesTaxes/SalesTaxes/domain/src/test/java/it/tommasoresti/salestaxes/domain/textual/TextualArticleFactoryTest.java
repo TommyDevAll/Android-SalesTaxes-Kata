@@ -25,33 +25,28 @@ public class TextualArticleFactoryTest {
 
     @Test
     public void given_a_chocolate_bar() throws Exception {
-        String articleString = "1 chocolate bar at 0.85";
-        Article article = textualArticleFactory.make(articleString);
+        Article article = textualArticleFactory.make("chocolate", 0.85f);
         assertThat(article, instanceOf(Food.class));
         assertThat(article.getPrice(), is(0.85f));
     }
 
     @Test
     public void given_some_headache_pills() throws Exception {
-        String article = "1 packet of headache pills at 9.75";
-        assertThat(textualArticleFactory.make(article), instanceOf(Medical.class));
+        assertThat(textualArticleFactory.make("packet of headache pills", 9.75f), instanceOf(Medical.class));
     }
 
     @Test
     public void given_a_book() throws Exception {
-        String article = "1 harry potter book at 9.75";
-        assertThat(textualArticleFactory.make(article), instanceOf(Book.class));
+        assertThat(textualArticleFactory.make("harry potter book", 9.75f), instanceOf(Book.class));
     }
 
     @Test
     public void given_a_music_cd() throws Exception {
-        String article = "1 Music CD at 10.00";
-        assertThat(textualArticleFactory.make(article), instanceOf(Other.class));
+        assertThat(textualArticleFactory.make("Music CD", 10.00f), instanceOf(Other.class));
     }
 
     @Test
     public void given_an_imported_chocolate_bar() throws Exception {
-        String article = "1 imported chocolate bar at 10.00";
-        assertThat(textualArticleFactory.make(article), instanceOf(Imported.class));
+        assertThat(textualArticleFactory.make("imported chocolate bar", 10.00f), instanceOf(Imported.class));
     }
 }
