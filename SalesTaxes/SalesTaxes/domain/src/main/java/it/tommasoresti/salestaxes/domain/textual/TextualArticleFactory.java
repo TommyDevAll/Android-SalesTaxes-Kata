@@ -1,7 +1,5 @@
 package it.tommasoresti.salestaxes.domain.textual;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,20 +7,16 @@ import java.util.regex.Matcher;
 
 import it.tommasoresti.salestaxes.domain.ArticleFactory;
 import it.tommasoresti.salestaxes.domain.article.Article;
-import it.tommasoresti.salestaxes.domain.article.Book;
-import it.tommasoresti.salestaxes.domain.article.Food;
 import it.tommasoresti.salestaxes.domain.article.Imported;
 import it.tommasoresti.salestaxes.domain.article.Item;
-import it.tommasoresti.salestaxes.domain.article.Medical;
-import it.tommasoresti.salestaxes.domain.article.Other;
 
 import static java.util.Collections.singletonList;
 
 public class TextualArticleFactory implements ArticleFactory {
-    private static Map<Class<? extends Item>, List<String>> categoryPatterns = new HashMap<Class<? extends Item>, List<String>>() {{
-        put(Food.class, singletonList("chocolate"));
-        put(Medical.class, singletonList("pills"));
-        put(Book.class, singletonList("book"));
+    private static Map<String, List<String>> categoryPatterns = new HashMap<String, List<String>>() {{
+        put("food", singletonList("chocolate"));
+        put("medical", singletonList("pills"));
+        put("book", singletonList("book"));
     }};
 
     @Override
@@ -32,9 +26,9 @@ public class TextualArticleFactory implements ArticleFactory {
 
     private Article createArticleWithDescriptionAndPrice(String description, float price) {
         Article article;
-        Class<? extends Item> itemType = findItemType(description, categoryPatterns);
-        Item newItemByType = createNewItemByType(itemType, description, price);
-        article = wrappedItemAsImportedIfNeeded(description, newItemByType);
+        String itemType = findItemType(description, categoryPatterns);
+        Item item = new Item(itemType, description, price);
+        article = wrappedItemAsImportedIfNeeded(description, item);
         return article;
     }
 
@@ -47,32 +41,14 @@ public class TextualArticleFactory implements ArticleFactory {
         return article;
     }
 
-    private Item createNewItemByType(Class<? extends Item> itemType, String description, float price) {
-        Item item = null;
-        try {
-            Constructor<? extends Item> constructor = itemType.getConstructor(String.class);
-            item = constructor.newInstance(description);
-            item.setPrice(price);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
-        return item;
-    }
-
-    private Class<? extends Item> findItemType(String description, Map<Class<? extends Item>, List<String>> categoryPatterns) {
-        for(Class<? extends Item> clazz : categoryPatterns.keySet()) {
+    private String findItemType(String description, Map<String, List<String>> categoryPatterns) {
+        for(String type : categoryPatterns.keySet()) {
             for(String word : description.split(" ")) {
-                if(categoryPatterns.get(clazz).contains(word))
-                    return clazz;
+                if(categoryPatterns.get(type).contains(word))
+                    return type;
             }
         }
-        return Other.class;
+        return "other";
     }
 
     private boolean articleHasBeenFound(Matcher matcher) {

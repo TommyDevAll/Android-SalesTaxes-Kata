@@ -12,10 +12,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class TaxedArticleTest {
     @Test
     public void given_an_article_taxed_by_10_percent() throws Exception {
-        Food food = new Food("food");
-        food.setPrice(100);
+        Food food = new Food("food", 100);
 
-        TaxedArticle taxedArticle = new TaxedArticle(food, 10);
+        TaxedArticle taxedArticle = new TaxedArticle(food);
+        taxedArticle.addTaxPercentage(10);
 
         assertThat(taxedArticle.getArticle(), CoreMatchers.<Article>is(food));
         assertThat(taxedArticle.getFinalPrice(), is(110f));

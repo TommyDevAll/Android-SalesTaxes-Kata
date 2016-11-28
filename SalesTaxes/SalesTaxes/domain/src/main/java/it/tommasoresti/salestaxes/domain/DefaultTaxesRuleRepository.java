@@ -6,6 +6,7 @@ import java.util.Map;
 import it.tommasoresti.salestaxes.domain.article.Article;
 import it.tommasoresti.salestaxes.domain.article.Imported;
 import it.tommasoresti.salestaxes.domain.article.Other;
+import it.tommasoresti.salestaxes.domain.tax.TaxRule;
 
 public class DefaultTaxesRuleRepository implements TaxesRuleRepository {
 
@@ -27,9 +28,6 @@ public class DefaultTaxesRuleRepository implements TaxesRuleRepository {
         return (taxRule != null)? taxRule.getTaxesOf(article): 0;
     }
 
-    private interface TaxRule {
-        float getTaxesOf(Article item);
-    }
 
     private static class OtherTaxRule implements TaxRule {
         public float getTaxesOf(Article item) {

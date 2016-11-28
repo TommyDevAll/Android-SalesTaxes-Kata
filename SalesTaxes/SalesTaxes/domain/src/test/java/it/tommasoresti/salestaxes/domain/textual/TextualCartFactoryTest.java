@@ -26,7 +26,7 @@ public class TextualCartFactoryTest {
         articleFactory = mock(ArticleFactory.class);
         textualArticleSplitter = new TextualCartFactory(articleFactory);
 
-        when(articleFactory.make(anyString(), anyFloat())).thenReturn(new Other(""));
+        when(articleFactory.make(anyString(), anyFloat())).thenReturn(new Other("", 10));
     }
 
     @Test

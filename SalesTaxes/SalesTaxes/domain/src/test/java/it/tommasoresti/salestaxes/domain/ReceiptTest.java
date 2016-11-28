@@ -15,11 +15,13 @@ public class ReceiptTest {
 
     @Test
     public void given_a_chocolate_bar_taxed_by_10_percent() throws Exception {
-        Food chocolateBar = new Food("chocolate bar");
-        chocolateBar.setPrice(100);
+        Food chocolateBar = new Food("chocolate bar", 100);
+
+        TaxedArticle taxedChocolateBar = new TaxedArticle(chocolateBar);
+        taxedChocolateBar.addTaxPercentage(10);
 
         Receipt receipt = new Receipt();
-        receipt.addArticleWithTaxes(chocolateBar, 10);
+        receipt.addTaxedArticle(taxedChocolateBar);
 
         assertThat(receipt.getTotal(), is(110f));
         assertThat(receipt.getTaxesPaid(), is(10f));
@@ -29,8 +31,15 @@ public class ReceiptTest {
     public void given_some_articles() throws Exception {
         Receipt receipt = new Receipt();
 
-        receipt.addArticleWithTaxes(new Food(""), 10);
-        receipt.addArticleWithTaxes(new Medical(""), 10);
+
+        TaxedArticle foodTaxedArticle = new TaxedArticle(new Food("", 100));
+        foodTaxedArticle.addTaxPercentage(10);
+
+        TaxedArticle medicalTaxedArticle = new TaxedArticle(new Medical("", 100));
+        medicalTaxedArticle.addTaxPercentage(10);
+
+        receipt.addTaxedArticle(foodTaxedArticle);
+        receipt.addTaxedArticle(medicalTaxedArticle);
 
         List<TaxedArticle> articles = receipt.getArticles();
         assertThat(articles.get(0).getArticle(), instanceOf(Food.class));

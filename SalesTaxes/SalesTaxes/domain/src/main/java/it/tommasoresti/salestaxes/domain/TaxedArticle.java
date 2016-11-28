@@ -6,10 +6,10 @@ public class TaxedArticle {
     private Article article;
     private float taxesPercentage;
     private float finalPrice;
-    TaxedArticle(Article article, float taxesPercentage) {
+
+    TaxedArticle(Article article) {
         this.article = article;
-        this.taxesPercentage = taxesPercentage;
-        this.finalPrice = calculateFinalPrice();
+        this.finalPrice = article.getPrice();
     }
 
     private float calculateFinalPrice() {
@@ -22,6 +22,11 @@ public class TaxedArticle {
 
     public Article getArticle() {
         return article;
+    }
+
+    public void addTaxPercentage(int taxesPercentage) {
+        this.taxesPercentage += taxesPercentage;
+        this.finalPrice = calculateFinalPrice();
     }
 
     public float getTaxesPercentage() {

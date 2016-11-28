@@ -28,8 +28,7 @@ public class SalesTaxesTest {
     public void given_a_chocolate_bar() throws Exception {
         when(taxesRepository.of(any(Article.class))).thenReturn(10f);
         Cart cart = new Cart();
-        Food chocolateBar = new Food("chocolate bar");
-        chocolateBar.setPrice(100f);
+        Food chocolateBar = new Food("chocolate bar", 100);
 
         cart.addArticle(chocolateBar);
         Receipt receipt = salesTaxes.of(cart);

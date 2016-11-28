@@ -19,8 +19,7 @@ public class Receipt {
         return taxesPaid;
     }
 
-    public void addArticleWithTaxes(Article article, float taxesPercentage) {
-        TaxedArticle taxedArticle = new TaxedArticle(article, taxesPercentage);
+    public void addTaxedArticle(TaxedArticle taxedArticle) {
         updateTotalWith(taxedArticle);
         updateTaxesPaidWith(taxedArticle);
         taxedArticles.add(taxedArticle);
