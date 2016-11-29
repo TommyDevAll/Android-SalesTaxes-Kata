@@ -4,17 +4,19 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import it.tommasoresti.salestaxes.domain.tax.TaxRuleHandler;
+
 import static org.mockito.Mockito.mock;
 
 public class SalesTaxesTest {
 
     private SalesTaxes salesTaxes;
-    private TaxesRuleChain taxesRepository;
+    private TaxRuleHandler taxesHandler;
 
     @Before
     public void setUp() throws Exception {
-        taxesRepository = mock(TaxesRuleChain.class);
-        salesTaxes = new SalesTaxes(taxesRepository);
+        taxesHandler = mock(TaxRuleHandler.class);
+        salesTaxes = new SalesTaxes(taxesHandler);
     }
 
     @Test @Ignore

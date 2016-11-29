@@ -1,11 +1,13 @@
 package it.tommasoresti.salestaxes.domain;
 
+import it.tommasoresti.salestaxes.domain.tax.TaxRuleHandler;
+
 public class SalesTaxes {
 
-    private TaxesRuleChain taxesRuleRepository;
+    private TaxRuleHandler taxesRuleHandler;
 
-    public SalesTaxes(TaxesRuleChain taxesRuleRepository) {
-        this.taxesRuleRepository = taxesRuleRepository;
+    public SalesTaxes(TaxRuleHandler taxesRuleHandler) {
+        this.taxesRuleHandler = taxesRuleHandler;
     }
 
     public Receipt of(Cart cart) {

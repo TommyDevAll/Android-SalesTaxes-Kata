@@ -7,20 +7,20 @@ import java.math.BigDecimal;
 
 import it.tommasoresti.salestaxes.domain.article.Imported;
 import it.tommasoresti.salestaxes.domain.article.Item;
-import it.tommasoresti.salestaxes.domain.tax.DefaultTaxesRuleChain;
+import it.tommasoresti.salestaxes.domain.tax.DefaultTaxRuleHandler;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class DefaultTaxesRuleChainTest {
+public class DefaultTaxRuleHandlerTest {
 
-    private DefaultTaxesRuleChain taxesRuleHandler;
+    private DefaultTaxRuleHandler taxesRuleHandler;
     private BigDecimal aPrice;
 
     @Before
     public void setUp() throws Exception {
-        taxesRuleHandler = new DefaultTaxesRuleChain();
+        taxesRuleHandler = new DefaultTaxRuleHandler();
         aPrice = new BigDecimal(10f);
     }
 
