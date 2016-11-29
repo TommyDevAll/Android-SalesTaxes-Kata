@@ -1,4 +1,4 @@
-package com.lastminute.salestaxes;
+package com.lastminute.salestaxes.app;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

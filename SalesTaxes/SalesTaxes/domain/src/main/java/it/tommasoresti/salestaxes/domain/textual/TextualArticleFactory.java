@@ -1,9 +1,9 @@
 package it.tommasoresti.salestaxes.domain.textual;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
 
 import it.tommasoresti.salestaxes.domain.ArticleFactory;
 import it.tommasoresti.salestaxes.domain.article.Article;
@@ -20,11 +20,7 @@ public class TextualArticleFactory implements ArticleFactory {
     }};
 
     @Override
-    public Article make(String description, float price) {
-        return createArticleWithDescriptionAndPrice(description, price);
-    }
-
-    private Article createArticleWithDescriptionAndPrice(String description, float price) {
+    public Article make(String description, BigDecimal price) {
         Article article;
         String itemType = findItemType(description, categoryPatterns);
         Item item = new Item(itemType, description, price);
@@ -49,9 +45,5 @@ public class TextualArticleFactory implements ArticleFactory {
             }
         }
         return "other";
-    }
-
-    private boolean articleHasBeenFound(Matcher matcher) {
-        return matcher.find();
     }
 }

@@ -1,39 +1,41 @@
 package it.tommasoresti.salestaxes.domain;
 
+import java.math.BigDecimal;
+
 import it.tommasoresti.salestaxes.domain.article.Article;
 
 public class TaxedArticle {
     private Article article;
-    private float taxesPercentage;
-    private float finalPrice;
+    private BigDecimal taxesPercentage = new BigDecimal(0);
+    private BigDecimal finalPrice = new BigDecimal(0);
 
     TaxedArticle(Article article) {
         this.article = article;
         this.finalPrice = article.getPrice();
     }
 
-    private float calculateFinalPrice() {
-        return article.getPrice() + percentageOf(article, taxesPercentage);
+    private BigDecimal calculateFinalPrice() {
+        return article.getPrice().add(percentageOf(article, taxesPercentage));
     }
 
-    private float percentageOf(Article article, float taxes) {
-        return article.getPrice() * taxes / 100;
+    private BigDecimal percentageOf(Article article, BigDecimal taxes) {
+        return article.getPrice().multiply(taxes).divide(new BigDecimal(100));
     }
 
     public Article getArticle() {
         return article;
     }
 
-    public void addTaxPercentage(int taxesPercentage) {
-        this.taxesPercentage += taxesPercentage;
+    public void addTaxPercentage(BigDecimal taxesPercentage) {
+        this.taxesPercentage = this.taxesPercentage.add(taxesPercentage);
         this.finalPrice = calculateFinalPrice();
     }
 
-    public float getTaxesPercentage() {
+    public BigDecimal getTaxesPercentage() {
         return taxesPercentage;
     }
 
-    public float getFinalPrice() {
+    public BigDecimal getFinalPrice() {
         return finalPrice;
     }
 }

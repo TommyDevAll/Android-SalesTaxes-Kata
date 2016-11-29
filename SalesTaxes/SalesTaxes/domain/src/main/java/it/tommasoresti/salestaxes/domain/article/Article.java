@@ -1,7 +1,9 @@
 package it.tommasoresti.salestaxes.domain.article;
 
+import java.math.BigDecimal;
+
 public interface Article {
     String getCategory();
-    void setPrice(float price);
-    float getPrice();
+    void setPrice(BigDecimal price);
+    BigDecimal getPrice();
 }

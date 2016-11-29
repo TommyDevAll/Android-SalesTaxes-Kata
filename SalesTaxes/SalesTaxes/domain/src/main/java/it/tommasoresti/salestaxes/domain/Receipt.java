@@ -1,5 +1,6 @@
 package it.tommasoresti.salestaxes.domain;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,14 +9,14 @@ import it.tommasoresti.salestaxes.domain.article.Article;
 public class Receipt {
 
     private List<TaxedArticle> taxedArticles = new ArrayList<>();
-    private float total = 0;
-    private float taxesPaid = 0;
+    private BigDecimal total = new BigDecimal(0);
+    private BigDecimal taxesPaid = new BigDecimal(0);
 
-    public float getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public float getTaxesPaid() {
+    public BigDecimal getTaxesPaid() {
         return taxesPaid;
     }
 
@@ -27,11 +28,11 @@ public class Receipt {
 
     private void updateTaxesPaidWith(TaxedArticle taxedArticle) {
         Article article = taxedArticle.getArticle();
-        taxesPaid += taxedArticle.getFinalPrice() - article.getPrice();
+        taxesPaid = taxesPaid.add(taxedArticle.getFinalPrice().subtract(article.getPrice()));
     }
 
     private void updateTotalWith(TaxedArticle taxedArticle) {
-        total += taxedArticle.getFinalPrice();
+        total = total.add(taxedArticle.getFinalPrice());
     }
 
     public List<TaxedArticle> getArticles() {

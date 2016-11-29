@@ -1,7 +1,10 @@
-package com.lastminute.salestaxes;
+package com.lastminute.salestaxes.app;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.lastminute.salestaxes.R;
+
 
 public class MainActivity extends AppCompatActivity {
 

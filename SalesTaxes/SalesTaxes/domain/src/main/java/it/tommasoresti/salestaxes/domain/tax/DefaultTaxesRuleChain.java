@@ -1,11 +1,10 @@
-package it.tommasoresti.salestaxes.domain;
+package it.tommasoresti.salestaxes.domain.tax;
 
 import java.util.Arrays;
 import java.util.List;
 
-import it.tommasoresti.salestaxes.domain.tax.ImportedTaxRuleHandler;
-import it.tommasoresti.salestaxes.domain.tax.OtherTaxRuleHandler;
-import it.tommasoresti.salestaxes.domain.tax.TaxRuleHandler;
+import it.tommasoresti.salestaxes.domain.TaxedArticle;
+import it.tommasoresti.salestaxes.domain.TaxesRuleChain;
 
 public class DefaultTaxesRuleChain implements TaxesRuleChain {
 

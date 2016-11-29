@@ -1,4 +1,4 @@
-package com.lastminute.salestaxes;
+package com.lastminute.salestaxes.app;
 
 import org.junit.Test;
 

@@ -1,12 +1,14 @@
 package it.tommasoresti.salestaxes.domain.article;
 
+import java.math.BigDecimal;
+
 public class Item implements Article{
 
     private String description;
     private String category;
-    private float price;
+    private BigDecimal price;
 
-    public Item(String category, String description, float price) {
+    public Item(String category, String description, BigDecimal price) {
         this.category = category;
         this.description = description;
         this.setPrice(price);
@@ -17,12 +19,12 @@ public class Item implements Article{
     }
 
     @Override
-    public void setPrice(float price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
     @Override
-    public float getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 }

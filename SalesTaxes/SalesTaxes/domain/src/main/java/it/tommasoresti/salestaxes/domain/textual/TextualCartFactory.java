@@ -1,5 +1,6 @@
 package it.tommasoresti.salestaxes.domain.textual;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -20,7 +21,7 @@ public class TextualCartFactory {
         List<Article> products = new ArrayList<>();
         Matcher matcher = Pattern.compile(PRODUCT_REGEX_PATTERN).matcher(articles);
         while (hasNextProduct(matcher)) {
-            products.add(textualArticleFactory.make(matcher.group(2), Float.parseFloat(matcher.group(3))));
+            products.add(textualArticleFactory.make(matcher.group(2), new BigDecimal(Float.parseFloat(matcher.group(3)))));
         }
         return products;
     }

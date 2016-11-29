@@ -1,10 +1,12 @@
 package it.tommasoresti.salestaxes.domain.tax;
 
+import java.math.BigDecimal;
+
 import it.tommasoresti.salestaxes.domain.TaxedArticle;
 
 public class OtherTaxRuleHandler implements TaxRuleHandler {
 
-    private static final int OTHER_ARTICLES_TAXES = 10;
+    private static final BigDecimal OTHER_ARTICLES_TAXES = new BigDecimal(10);
 
     @Override
     public boolean canHandle(TaxedArticle taxedArticle) {
