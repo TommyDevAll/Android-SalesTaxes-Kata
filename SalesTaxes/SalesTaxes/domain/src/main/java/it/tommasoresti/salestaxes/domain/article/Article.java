@@ -1,19 +1,7 @@
 package it.tommasoresti.salestaxes.domain.article;
 
-public abstract class Article {
-    private float price;
-
-    public abstract Item getItem();
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public String getCategory() {
-        return getItem().getCategory();
-    }
+public interface Article {
+    String getCategory();
+    void setPrice(float price);
+    float getPrice();
 }

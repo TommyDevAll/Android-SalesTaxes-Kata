@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import it.tommasoresti.salestaxes.domain.article.Article;
 import it.tommasoresti.salestaxes.domain.article.Imported;
-import it.tommasoresti.salestaxes.domain.article.Item;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
@@ -23,26 +22,26 @@ public class TextualArticleFactoryTest {
     @Test
     public void given_a_chocolate_bar() throws Exception {
         Article article = textualArticleFactory.make("chocolate", 0.85f);
-        assertThat(article.getItem().getCategory(), is("food"));
+        assertThat(article.getCategory(), is("food"));
         assertThat(article.getPrice(), is(0.85f));
     }
 
     @Test
     public void given_some_headache_pills() throws Exception {
-        Item item = textualArticleFactory.make("packet of headache pills", 9.75f).getItem();
-        assertThat(item.getCategory(), is("medical"));
+        Article article = textualArticleFactory.make("packet of headache pills", 9.75f);
+        assertThat(article.getCategory(), is("medical"));
     }
 
     @Test
     public void given_a_book() throws Exception {
-        Item item = textualArticleFactory.make("harry potter book", 9.75f).getItem();
-        assertThat(item.getCategory(), is("book"));
+        Article article = textualArticleFactory.make("harry potter book", 9.75f);
+        assertThat(article.getCategory(), is("book"));
     }
 
     @Test
     public void given_a_music_cd() throws Exception {
-        Item item = textualArticleFactory.make("Music CD", 10.00f).getItem();
-        assertThat(item.getCategory(), is("other"));
+        Article article = textualArticleFactory.make("Music CD", 10.00f);
+        assertThat(article.getCategory(), is("other"));
     }
 
     @Test

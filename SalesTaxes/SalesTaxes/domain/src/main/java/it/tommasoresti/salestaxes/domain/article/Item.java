@@ -1,9 +1,10 @@
 package it.tommasoresti.salestaxes.domain.article;
 
-public class Item extends Article{
+public class Item implements Article{
 
     private String description;
     private String category;
+    private float price;
 
     public Item(String category, String description, float price) {
         this.category = category;
@@ -11,19 +12,17 @@ public class Item extends Article{
         this.setPrice(price);
     }
 
-    public Item(String category, float price) {
-        this(category, "", price);
-    }
-
-    public Item getItem() {
-        return this;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
     public String getCategory() {
         return category;
+    }
+
+    @Override
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    @Override
+    public float getPrice() {
+        return price;
     }
 }
