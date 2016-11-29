@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public interface Article {
     String getCategory();
+    String getDescription();
     void setPrice(BigDecimal price);
     BigDecimal getPrice();
 }

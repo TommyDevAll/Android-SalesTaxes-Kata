@@ -14,6 +14,7 @@ public class Item implements Article{
         this.setPrice(price);
     }
 
+    @Override
     public String getCategory() {
         return category;
     }
@@ -26,5 +27,10 @@ public class Item implements Article{
     @Override
     public BigDecimal getPrice() {
         return price;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
     }
 }

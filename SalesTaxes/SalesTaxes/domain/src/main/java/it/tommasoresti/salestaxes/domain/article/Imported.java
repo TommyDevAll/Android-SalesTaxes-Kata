@@ -23,4 +23,9 @@ public class Imported implements Article {
     public BigDecimal getPrice() {
         return item.getPrice();
     }
+
+    @Override
+    public String getDescription() {
+        return item.getDescription();
+    }
 }
