@@ -11,12 +11,8 @@ public class Item extends Article{
         this.setPrice(price);
     }
 
-    public Item(String category) {
-        this(category, "", 0);
-    }
-
-    public Item(String category, String description) {
-        this(category, description, 0);
+    public Item(String category, float price) {
+        this(category, "", price);
     }
 
     public Item getItem() {

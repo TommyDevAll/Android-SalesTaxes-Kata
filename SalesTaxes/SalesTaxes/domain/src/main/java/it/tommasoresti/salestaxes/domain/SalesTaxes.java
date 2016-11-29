@@ -2,9 +2,9 @@ package it.tommasoresti.salestaxes.domain;
 
 public class SalesTaxes {
 
-    private TaxesRuleRepository taxesRuleRepository;
+    private TaxesRuleChain taxesRuleRepository;
 
-    public SalesTaxes(TaxesRuleRepository taxesRuleRepository) {
+    public SalesTaxes(TaxesRuleChain taxesRuleRepository) {
         this.taxesRuleRepository = taxesRuleRepository;
     }
 

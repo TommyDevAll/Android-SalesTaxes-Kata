@@ -12,4 +12,8 @@ public abstract class Article {
     public float getPrice() {
         return price;
     }
+
+    public String getCategory() {
+        return getItem().getCategory();
+    }
 }

@@ -7,14 +7,10 @@ import java.util.List;
 
 import it.tommasoresti.salestaxes.domain.ArticleFactory;
 import it.tommasoresti.salestaxes.domain.article.Article;
-import it.tommasoresti.salestaxes.domain.article.Other;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.Matchers.anyFloat;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class TextualCartFactoryTest {
 
@@ -25,8 +21,6 @@ public class TextualCartFactoryTest {
     public void setUp() throws Exception {
         articleFactory = mock(ArticleFactory.class);
         textualArticleSplitter = new TextualCartFactory(articleFactory);
-
-        when(articleFactory.make(anyString(), anyFloat())).thenReturn(new Other("", 10));
     }
 
     @Test

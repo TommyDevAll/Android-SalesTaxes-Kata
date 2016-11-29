@@ -4,7 +4,7 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
 import it.tommasoresti.salestaxes.domain.article.Article;
-import it.tommasoresti.salestaxes.domain.article.Food;
+import it.tommasoresti.salestaxes.domain.article.Item;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -12,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class TaxedArticleTest {
     @Test
     public void given_an_article_taxed_by_10_percent() throws Exception {
-        Food food = new Food("food", 100);
+        Item food = new Item("food", "chocolate", 100);
 
         TaxedArticle taxedArticle = new TaxedArticle(food);
         taxedArticle.addTaxPercentage(10);
