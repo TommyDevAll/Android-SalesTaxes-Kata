@@ -2,7 +2,6 @@ package it.tommasoresti.salestaxes.domain.textual;
 
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import it.tommasoresti.salestaxes.domain.SalesTaxes;
@@ -32,7 +31,7 @@ public class AcceptanceTest {
         assertThat(receipt, is("1 imported box of chocolates: 10.50 1 imported bottle of perfume: 54.65 Sales Taxes: 7.65 Total: 65.15"));
     }
 
-    @Test @Ignore
+    @Test
     public void given_imported_perfume_a_not_imported_purfume_some_pills_and_chocolate() throws Exception {
         String receipt = salesTaxes.of("1 imported bottle of perfume at 27.99 1 bottle of perfume at 18.99 1 packet of headache pills at 9.75 1 box of imported chocolates at 11.25");
         assertThat(receipt, is("1 imported bottle of perfume: 32.19 1 bottle of perfume: 20.89 1 packet of headache pills: 9.75 1 imported box of chocolates: 11.85 Sales Taxes: 6.70 Total: 74.68"));

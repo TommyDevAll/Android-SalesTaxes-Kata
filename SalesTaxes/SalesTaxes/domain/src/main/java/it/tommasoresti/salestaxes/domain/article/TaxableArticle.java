@@ -19,11 +19,11 @@ public class TaxableArticle implements Article {
 
     private static BigDecimal round5Cents(BigDecimal value) {
         BigDecimal step = new BigDecimal("0.05");
-        BigDecimal division = value.divide(step, BigDecimal.ROUND_HALF_UP);
-        BigDecimal integerDivision = division.setScale(0, BigDecimal.ROUND_HALF_UP);
+        BigDecimal division = value.divide(step, BigDecimal.ROUND_UP);
+        BigDecimal integerDivision = division.setScale(0, BigDecimal.ROUND_UP);
         BigDecimal valueToNearestStep = step.multiply(integerDivision.subtract(division));
         value = value.add(valueToNearestStep);
-        value = value.setScale(2, BigDecimal.ROUND_HALF_UP);
+        value = value.setScale(2, BigDecimal.ROUND_UP);
         return value;
     }
 

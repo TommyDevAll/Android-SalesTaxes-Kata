@@ -26,6 +26,6 @@ public class Imported implements Article {
 
     @Override
     public String getDescription() {
-        return item.getDescription();
+        return "imported " + item.getDescription();
     }
 }

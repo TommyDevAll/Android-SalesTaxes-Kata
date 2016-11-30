@@ -24,7 +24,8 @@ public class TextualArticleFactory implements ArticleFactory {
     public Article make(String description, BigDecimal price) {
         Article article;
         String itemType = findItemType(description, categoryPatterns);
-        Item item = new Item(itemType, description, price);
+        String cleanDescription = description.replace("imported ", "");
+        Item item = new Item(itemType, cleanDescription, price);
         article = wrappedItemAsImportedIfNeeded(description, item);
         return article;
     }
