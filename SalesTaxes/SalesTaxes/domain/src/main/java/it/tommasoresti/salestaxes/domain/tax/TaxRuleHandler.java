@@ -1,8 +1,8 @@
 package it.tommasoresti.salestaxes.domain.tax;
 
-import it.tommasoresti.salestaxes.domain.TaxedArticle;
+import it.tommasoresti.salestaxes.domain.article.TaxableArticle;
 
 public interface TaxRuleHandler {
-    boolean canHandle(TaxedArticle article);
-    void handle(TaxedArticle article);
+    boolean canHandle(TaxableArticle article);
+    void handle(TaxableArticle article);
 }

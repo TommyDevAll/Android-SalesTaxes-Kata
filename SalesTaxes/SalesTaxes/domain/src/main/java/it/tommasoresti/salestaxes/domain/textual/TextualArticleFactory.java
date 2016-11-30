@@ -1,6 +1,7 @@
 package it.tommasoresti.salestaxes.domain.textual;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +15,7 @@ import static java.util.Collections.singletonList;
 
 public class TextualArticleFactory implements ArticleFactory {
     private static Map<String, List<String>> categoryPatterns = new HashMap<String, List<String>>() {{
-        put("food", singletonList("chocolate"));
+        put("food", Arrays.asList("chocolate", "chocolates"));
         put("medical", singletonList("pills"));
         put("book", singletonList("book"));
     }};

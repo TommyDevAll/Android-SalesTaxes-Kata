@@ -5,8 +5,8 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import it.tommasoresti.salestaxes.domain.tax.DefaultTaxRuleHandler;
 import it.tommasoresti.salestaxes.domain.SalesTaxes;
+import it.tommasoresti.salestaxes.domain.tax.DefaultTaxRuleHandler;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -23,10 +23,10 @@ public class AcceptanceTest {
     @Test
     public void given_a_book_a_cd_and_a_chocolate_bar() throws Exception {
         String receipt = salesTaxes.of("1 book at 12.49 1 music CD at 14.99 1 chocolate bar at 0.85");
-        assertThat(receipt, is("1 book : 12.49 1 music CD: 16.49 1 chocolate bar: 0.85 Sales Taxes: 1.50 Total: 29.83"));
+        assertThat(receipt, is("1 book: 12.49 1 music CD: 16.49 1 chocolate bar: 0.85 Sales Taxes: 1.50 Total: 29.83"));
     }
 
-    @Test @Ignore
+    @Test
     public void given_imported_chocolate_and_imported_perfume() throws Exception {
         String receipt = salesTaxes.of("1 imported box of chocolates at 10.00 1 imported bottle of perfume at 47.50");
         assertThat(receipt, is("1 imported box of chocolates: 10.50 1 imported bottle of perfume: 54.65 Sales Taxes: 7.65 Total: 65.15"));

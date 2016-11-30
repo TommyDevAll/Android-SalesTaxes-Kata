@@ -1,6 +1,11 @@
 package it.tommasoresti.salestaxes.domain.textual;
 
+import java.util.List;
+
+import it.tommasoresti.salestaxes.domain.Cart;
+import it.tommasoresti.salestaxes.domain.Receipt;
 import it.tommasoresti.salestaxes.domain.SalesTaxes;
+import it.tommasoresti.salestaxes.domain.article.Article;
 
 class TextualSalesTaxes {
     private SalesTaxes salesTaxes;
@@ -11,14 +16,17 @@ class TextualSalesTaxes {
         splitter = new TextualCartFactory(new TextualArticleFactory());
     }
 
-    public String of(String cart) {
-        if(cart.equalsIgnoreCase("1 book at 12.49 1 music CD at 14.99 1 chocolate bar at 0.85")) {
-            return firstCase(cart);
-        }
-        return "";
+    public String of(String cartString) {
+        Cart cart = buildCart(cartString);
+        Receipt receipt = salesTaxes.of(cart);
+        return new TextualReceipt(receipt).toString();
     }
 
-    private String firstCase(String cart) {
-        return "1 book : 12.49 1 music CD: 16.49 1 chocolate bar: 0.85 Sales Taxes: 1.50 Total: 29.83";
+    private Cart buildCart(String cartString) {
+        Cart cart = new Cart();
+        List<Article> articleList = splitter.make(cartString);
+        for(Article article : articleList)
+            cart.addArticle(article);
+        return cart;
     }
 }

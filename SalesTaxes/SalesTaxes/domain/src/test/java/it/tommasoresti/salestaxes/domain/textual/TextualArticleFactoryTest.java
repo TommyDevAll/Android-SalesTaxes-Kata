@@ -13,7 +13,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class TextualArticleTestFactoryTest {
+public class TextualArticleFactoryTest {
 
     private TextualArticleFactory textualArticleFactory;
 

@@ -12,6 +12,6 @@ public class TextualArticle {
     }
 
     public String toString() {
-        return String.format(new Locale("en"), "1 %s : %.2f", article.getDescription(), article.getPrice().floatValue());
+        return String.format(new Locale("en"), "1 %s: %.2f", article.getDescription(), article.getPrice().floatValue());
     }
 }
