@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 import it.tommasoresti.salestaxes.domain.article.Article;
 import it.tommasoresti.salestaxes.domain.article.Item;
-import it.tommasoresti.salestaxes.domain.tax.TaxableArticle;
+import it.tommasoresti.salestaxes.domain.article.TaxableArticle;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;

@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 import it.tommasoresti.salestaxes.domain.article.Imported;
 import it.tommasoresti.salestaxes.domain.article.Item;
-import it.tommasoresti.salestaxes.domain.tax.TaxableArticle;
+import it.tommasoresti.salestaxes.domain.article.TaxableArticle;
 import it.tommasoresti.salestaxes.domain.round.RoundUp5CentsPolicy;
 import it.tommasoresti.salestaxes.domain.round.RoundingPolicy;
 import it.tommasoresti.salestaxes.domain.tax.DefaultTaxRuleHandler;

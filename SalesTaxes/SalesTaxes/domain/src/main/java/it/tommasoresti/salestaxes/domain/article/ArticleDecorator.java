@@ -2,10 +2,10 @@ package it.tommasoresti.salestaxes.domain.article;
 
 import java.math.BigDecimal;
 
-public class ArticleWrapper implements Article {
+public class ArticleDecorator implements Article {
 
     private Article article;
-    public ArticleWrapper(Article article) {
+    public ArticleDecorator(Article article) {
         this.article = article;
     }
 
@@ -22,5 +22,9 @@ public class ArticleWrapper implements Article {
     @Override
     public BigDecimal getPrice() {
         return article.getPrice();
+    }
+
+    public Article getArticle() {
+        return article;
     }
 }

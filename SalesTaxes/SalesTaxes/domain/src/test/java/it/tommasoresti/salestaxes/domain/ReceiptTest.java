@@ -10,8 +10,8 @@ import it.tommasoresti.salestaxes.domain.article.Imported;
 import it.tommasoresti.salestaxes.domain.article.Item;
 import it.tommasoresti.salestaxes.domain.round.RoundUp5CentsPolicy;
 import it.tommasoresti.salestaxes.domain.tax.TaxCalculator;
-import it.tommasoresti.salestaxes.domain.tax.TaxableArticle;
-import it.tommasoresti.salestaxes.domain.tax.TaxedArticle;
+import it.tommasoresti.salestaxes.domain.article.TaxableArticle;
+import it.tommasoresti.salestaxes.domain.article.TaxedArticle;
 
 import static it.tommasoresti.salestaxes.domain.TestUtils.round2Decimals;
 import static org.hamcrest.CoreMatchers.is;

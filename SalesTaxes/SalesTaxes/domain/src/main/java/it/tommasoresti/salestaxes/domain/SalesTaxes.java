@@ -1,7 +1,7 @@
 package it.tommasoresti.salestaxes.domain;
 
 import it.tommasoresti.salestaxes.domain.article.Article;
-import it.tommasoresti.salestaxes.domain.tax.TaxableArticle;
+import it.tommasoresti.salestaxes.domain.article.TaxableArticle;
 import it.tommasoresti.salestaxes.domain.tax.TaxCalculator;
 import it.tommasoresti.salestaxes.domain.tax.TaxRuleHandler;
 

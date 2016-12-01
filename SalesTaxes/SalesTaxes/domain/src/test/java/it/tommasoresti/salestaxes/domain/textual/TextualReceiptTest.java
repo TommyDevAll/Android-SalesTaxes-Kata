@@ -8,7 +8,7 @@ import it.tommasoresti.salestaxes.domain.Receipt;
 import it.tommasoresti.salestaxes.domain.article.Item;
 import it.tommasoresti.salestaxes.domain.round.RoundUp5CentsPolicy;
 import it.tommasoresti.salestaxes.domain.tax.TaxCalculator;
-import it.tommasoresti.salestaxes.domain.tax.TaxableArticle;
+import it.tommasoresti.salestaxes.domain.article.TaxableArticle;
 
 public class TextualReceiptTest {
     @Test

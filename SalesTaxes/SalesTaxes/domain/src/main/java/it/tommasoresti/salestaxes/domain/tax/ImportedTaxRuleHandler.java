@@ -3,6 +3,7 @@ package it.tommasoresti.salestaxes.domain.tax;
 import java.math.BigDecimal;
 
 import it.tommasoresti.salestaxes.domain.article.Imported;
+import it.tommasoresti.salestaxes.domain.article.TaxableArticle;
 
 public class ImportedTaxRuleHandler implements TaxRuleHandler {
 

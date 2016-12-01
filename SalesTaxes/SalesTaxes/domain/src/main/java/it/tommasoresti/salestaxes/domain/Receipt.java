@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.tommasoresti.salestaxes.domain.tax.TaxedArticle;
+import it.tommasoresti.salestaxes.domain.article.TaxedArticle;
 
 public class Receipt {
 

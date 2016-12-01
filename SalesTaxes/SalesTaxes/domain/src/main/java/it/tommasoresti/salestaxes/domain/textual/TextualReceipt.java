@@ -3,7 +3,7 @@ package it.tommasoresti.salestaxes.domain.textual;
 import java.util.Locale;
 
 import it.tommasoresti.salestaxes.domain.Receipt;
-import it.tommasoresti.salestaxes.domain.tax.TaxedArticle;
+import it.tommasoresti.salestaxes.domain.article.TaxedArticle;
 
 public class TextualReceipt {
     private String string;

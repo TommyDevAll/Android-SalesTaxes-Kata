@@ -1,10 +1,8 @@
-package it.tommasoresti.salestaxes.domain.tax;
+package it.tommasoresti.salestaxes.domain.article;
 
 import java.math.BigDecimal;
 
-import it.tommasoresti.salestaxes.domain.article.ArticleWrapper;
-
-public class TaxedArticle extends ArticleWrapper {
+public class TaxedArticle extends ArticleDecorator {
     private BigDecimal finalPrice;
 
     public TaxedArticle(TaxableArticle article, BigDecimal finalPrice) {

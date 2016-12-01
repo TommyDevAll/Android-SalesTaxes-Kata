@@ -2,6 +2,8 @@ package it.tommasoresti.salestaxes.domain.tax;
 
 import java.math.BigDecimal;
 
+import it.tommasoresti.salestaxes.domain.article.TaxableArticle;
+
 public class OtherTaxRuleHandler implements TaxRuleHandler {
 
     private static final BigDecimal OTHER_ARTICLES_TAXES = new BigDecimal(10);

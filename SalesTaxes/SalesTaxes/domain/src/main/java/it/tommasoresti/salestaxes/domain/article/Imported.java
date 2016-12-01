@@ -1,6 +1,6 @@
 package it.tommasoresti.salestaxes.domain.article;
 
-public class Imported extends ArticleWrapper {
+public class Imported extends ArticleDecorator {
 
     public Imported(Article article) {
         super(article);

@@ -3,6 +3,8 @@ package it.tommasoresti.salestaxes.domain.tax;
 import java.math.BigDecimal;
 
 import it.tommasoresti.salestaxes.domain.article.Article;
+import it.tommasoresti.salestaxes.domain.article.TaxableArticle;
+import it.tommasoresti.salestaxes.domain.article.TaxedArticle;
 import it.tommasoresti.salestaxes.domain.round.RoundingPolicy;
 
 public class TaxCalculator {
