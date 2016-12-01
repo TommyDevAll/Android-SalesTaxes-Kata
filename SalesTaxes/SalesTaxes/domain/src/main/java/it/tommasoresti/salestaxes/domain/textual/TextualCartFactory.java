@@ -9,15 +9,15 @@ import java.util.regex.Pattern;
 import it.tommasoresti.salestaxes.domain.ArticleFactory;
 import it.tommasoresti.salestaxes.domain.article.Article;
 
-public class TextualCartFactory {
-    public static final String PRODUCT_REGEX_PATTERN = "(\\d*) (\\D*) at (\\d*\\.\\d{2})";
+class TextualCartFactory {
+    private static final String PRODUCT_REGEX_PATTERN = "(\\d*) (\\D*) at (\\d*\\.\\d{2})";
     private final ArticleFactory textualArticleFactory;
 
-    public TextualCartFactory(ArticleFactory textualArticleFactory) {
+    TextualCartFactory(ArticleFactory textualArticleFactory) {
         this.textualArticleFactory = textualArticleFactory;
     }
 
-    public List<Article> make(String articles) {
+    List<Article> make(String articles) {
         List<Article> products = new ArrayList<>();
         Matcher matcher = Pattern.compile(PRODUCT_REGEX_PATTERN).matcher(articles);
         while (hasNextProduct(matcher)) {

@@ -13,7 +13,7 @@ import it.tommasoresti.salestaxes.domain.article.Item;
 
 import static java.util.Collections.singletonList;
 
-public class TextualArticleFactory implements ArticleFactory {
+class TextualArticleFactory implements ArticleFactory {
     private static Map<String, List<String>> categoryPatterns = new HashMap<String, List<String>>() {{
         put("food", Arrays.asList("chocolate", "chocolates"));
         put("medical", singletonList("pills"));

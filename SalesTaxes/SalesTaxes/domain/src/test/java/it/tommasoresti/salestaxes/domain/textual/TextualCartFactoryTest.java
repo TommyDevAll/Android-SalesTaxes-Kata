@@ -15,11 +15,10 @@ import static org.mockito.Mockito.mock;
 public class TextualCartFactoryTest {
 
     private TextualCartFactory textualArticleSplitter;
-    private ArticleFactory articleFactory;
 
     @Before
     public void setUp() throws Exception {
-        articleFactory = mock(ArticleFactory.class);
+        ArticleFactory articleFactory = mock(ArticleFactory.class);
         textualArticleSplitter = new TextualCartFactory(articleFactory);
     }
 
