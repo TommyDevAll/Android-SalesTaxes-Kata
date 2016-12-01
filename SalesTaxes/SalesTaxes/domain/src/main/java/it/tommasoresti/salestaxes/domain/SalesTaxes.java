@@ -8,11 +8,11 @@ import it.tommasoresti.salestaxes.domain.article.TaxedArticle;
 public class SalesTaxes {
 
     private TaxRuleHandler taxesRuleHandler;
-    private TaxedArticle.TaxedArticleFactory taxedArticleFactory;
+    private TaxedArticle.Factory factory;
 
-    public SalesTaxes(TaxRuleHandler taxesRuleHandler, TaxedArticle.TaxedArticleFactory taxedArticleFactory) {
+    public SalesTaxes(TaxRuleHandler taxesRuleHandler, TaxedArticle.Factory factory) {
         this.taxesRuleHandler = taxesRuleHandler;
-        this.taxedArticleFactory = taxedArticleFactory;
+        this.factory = factory;
     }
 
     public Receipt of(Cart cart) {
@@ -21,7 +21,7 @@ public class SalesTaxes {
             TaxableArticle taxableArticle = new TaxableArticle(article);
             if(taxesRuleHandler.canHandle(taxableArticle))
                 taxesRuleHandler.handle(taxableArticle);
-            receipt.addTaxedArticle(taxedArticleFactory.calculate(taxableArticle));
+            receipt.addTaxedArticle(factory.make(taxableArticle));
         }
         return receipt;
     }

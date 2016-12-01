@@ -21,15 +21,15 @@ public class TaxedArticle extends ArticleDecorator {
         return super.getPrice();
     }
 
-    public static class TaxedArticleFactory {
+    public static class Factory {
 
         private RoundingPolicy roundingPolicy;
 
-        public TaxedArticleFactory(RoundingPolicy roundingPolicy) {
+        public Factory(RoundingPolicy roundingPolicy) {
             this.roundingPolicy = roundingPolicy;
         }
 
-        public TaxedArticle calculate(TaxableArticle article) {
+        public TaxedArticle make(TaxableArticle article) {
             BigDecimal taxesPaid = percentageOf(article, article.getTaxesPercentage());
             return new TaxedArticle(article, article.getPrice().add(roundingPolicy.round(taxesPaid)));
         }

@@ -18,7 +18,7 @@ public class SalesTaxesTest {
     @Before
     public void setUp() throws Exception {
         taxesHandler = mock(TaxRuleHandler.class);
-        salesTaxes = new SalesTaxes(taxesHandler, new TaxedArticle.TaxedArticleFactory(new RoundUp5CentsPolicy()));
+        salesTaxes = new SalesTaxes(taxesHandler, new TaxedArticle.Factory(new RoundUp5CentsPolicy()));
     }
 
     @Test @Ignore

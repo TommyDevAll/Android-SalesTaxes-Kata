@@ -18,7 +18,7 @@ public class AcceptanceTest {
 
     @Before
     public void setUp() throws Exception {
-        salesTaxes = new TextualSalesTaxes(new SalesTaxes(new DefaultTaxRuleHandler(), new TaxedArticle.TaxedArticleFactory(new RoundUp5CentsPolicy())));
+        salesTaxes = new TextualSalesTaxes(new SalesTaxes(new DefaultTaxRuleHandler(), new TaxedArticle.Factory(new RoundUp5CentsPolicy())));
     }
 
     @Test
