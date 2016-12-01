@@ -4,12 +4,17 @@ import java.util.Locale;
 
 import it.tommasoresti.salestaxes.domain.Receipt;
 import it.tommasoresti.salestaxes.domain.article.TaxedArticle;
+import it.tommasoresti.salestaxes.domain.round.RoundingPolicy;
 
 public class TextualReceipt {
     private String string;
+    private final Receipt receipt;
+    private final RoundingPolicy roundingPolicy;
 
-    public TextualReceipt(Receipt receipt) {
+    public TextualReceipt(Receipt receipt, RoundingPolicy roundingPolicy) {
+        this.roundingPolicy = roundingPolicy;
         this.string = buildString(receipt);
+        this.receipt = receipt;
     }
 
     public String toString() {
@@ -38,7 +43,7 @@ public class TextualReceipt {
         boolean first = true;
         for(TaxedArticle taxedArticle : receipt.getTaxedArticles()) {
             builder.append(first ? "" : " ");
-            builder.append(new TextualArticle(taxedArticle).toString());
+            builder.append(new TextualArticle(taxedArticle, roundingPolicy).toString());
             first = false;
         }
     }

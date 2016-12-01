@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.util.List;
 
 import it.tommasoresti.salestaxes.domain.article.Article;
+import it.tommasoresti.salestaxes.domain.round.Round2DecimalPolicy;
+import it.tommasoresti.salestaxes.domain.round.RoundingPolicy;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -13,6 +15,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class TextualArticleTest {
     private TextualCartFactory factory;
+    private RoundingPolicy roundingPolicy = new Round2DecimalPolicy();
 
     @Before
     public void setUp() throws Exception {
@@ -25,9 +28,9 @@ public class TextualArticleTest {
 
         assertThat(articles.size(), is(3));
 
-        assertThat(new TextualArticle(articles.get(0)).toString(), is(equalTo("1 book: 12.49")));
-        assertThat(new TextualArticle(articles.get(1)).toString(), is(equalTo("1 music CD: 14.99")));
-        assertThat(new TextualArticle(articles.get(2)).toString(), is(equalTo("1 chocolate bar: 0.85")));
+        assertThat(new TextualArticle(articles.get(0), roundingPolicy).toString(), is(equalTo("1 book: 12.49")));
+        assertThat(new TextualArticle(articles.get(1), roundingPolicy).toString(), is(equalTo("1 music CD: 14.99")));
+        assertThat(new TextualArticle(articles.get(2), roundingPolicy).toString(), is(equalTo("1 chocolate bar: 0.85")));
     }
 
     @Test
@@ -36,8 +39,8 @@ public class TextualArticleTest {
 
         assertThat(articles.size(), is(2));
 
-        assertThat(new TextualArticle(articles.get(0)).toString(), is(equalTo("1 imported box of chocolates: 10.00")));
-        assertThat(new TextualArticle(articles.get(1)).toString(), is(equalTo("1 imported bottle of perfume: 47.50")));
+        assertThat(new TextualArticle(articles.get(0), roundingPolicy).toString(), is(equalTo("1 imported box of chocolates: 10.00")));
+        assertThat(new TextualArticle(articles.get(1), roundingPolicy).toString(), is(equalTo("1 imported bottle of perfume: 47.50")));
     }
 
     @Test
@@ -46,10 +49,10 @@ public class TextualArticleTest {
 
         assertThat(articles.size(), is(4));
 
-        assertThat(new TextualArticle(articles.get(0)).toString(), is(equalTo("1 imported bottle of perfume: 27.99")));
-        assertThat(new TextualArticle(articles.get(1)).toString(), is(equalTo("1 bottle of perfume: 18.99")));
-        assertThat(new TextualArticle(articles.get(2)).toString(), is(equalTo("1 packet of headache pills: 9.75")));
-        assertThat(new TextualArticle(articles.get(3)).toString(), is(equalTo("1 imported box of chocolates: 11.25")));
+        assertThat(new TextualArticle(articles.get(0), roundingPolicy).toString(), is(equalTo("1 imported bottle of perfume: 27.99")));
+        assertThat(new TextualArticle(articles.get(1), roundingPolicy).toString(), is(equalTo("1 bottle of perfume: 18.99")));
+        assertThat(new TextualArticle(articles.get(2), roundingPolicy).toString(), is(equalTo("1 packet of headache pills: 9.75")));
+        assertThat(new TextualArticle(articles.get(3), roundingPolicy).toString(), is(equalTo("1 imported box of chocolates: 11.25")));
     }
 
 }

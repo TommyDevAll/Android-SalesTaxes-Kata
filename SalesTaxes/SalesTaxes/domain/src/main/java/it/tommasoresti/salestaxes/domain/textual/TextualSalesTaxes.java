@@ -6,6 +6,7 @@ import it.tommasoresti.salestaxes.domain.Cart;
 import it.tommasoresti.salestaxes.domain.Receipt;
 import it.tommasoresti.salestaxes.domain.SalesTaxes;
 import it.tommasoresti.salestaxes.domain.article.Article;
+import it.tommasoresti.salestaxes.domain.round.Round2DecimalPolicy;
 
 class TextualSalesTaxes {
     private SalesTaxes salesTaxes;
@@ -19,7 +20,7 @@ class TextualSalesTaxes {
     public String of(String cartString) {
         Cart cart = buildCart(cartString);
         Receipt receipt = salesTaxes.of(cart);
-        return new TextualReceipt(receipt).toString();
+        return new TextualReceipt(receipt, new Round2DecimalPolicy()).toString();
     }
 
     private Cart buildCart(String cartString) {

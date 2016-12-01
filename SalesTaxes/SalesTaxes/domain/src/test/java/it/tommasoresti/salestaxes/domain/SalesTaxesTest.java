@@ -5,8 +5,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import it.tommasoresti.salestaxes.domain.round.RoundUp5CentsPolicy;
-import it.tommasoresti.salestaxes.domain.tax.TaxCalculator;
 import it.tommasoresti.salestaxes.domain.tax.TaxRuleHandler;
+import it.tommasoresti.salestaxes.domain.article.TaxedArticle;
 
 import static org.mockito.Mockito.mock;
 
@@ -18,7 +18,7 @@ public class SalesTaxesTest {
     @Before
     public void setUp() throws Exception {
         taxesHandler = mock(TaxRuleHandler.class);
-        salesTaxes = new SalesTaxes(taxesHandler, new TaxCalculator(new RoundUp5CentsPolicy()));
+        salesTaxes = new SalesTaxes(taxesHandler, new TaxedArticle.TaxedArticleFactory(new RoundUp5CentsPolicy()));
     }
 
     @Test @Ignore
