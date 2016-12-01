@@ -4,12 +4,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.tommasoresti.salestaxes.domain.article.Article;
-import it.tommasoresti.salestaxes.domain.article.TaxableArticle;
+import it.tommasoresti.salestaxes.domain.tax.TaxedArticle;
 
 public class Receipt {
 
-    private List<TaxableArticle> taxedArticles = new ArrayList<>();
+    private List<TaxedArticle> taxedArticles = new ArrayList<>();
     private BigDecimal total = new BigDecimal(0);
     private BigDecimal taxesPaid = new BigDecimal(0);
 
@@ -21,22 +20,21 @@ public class Receipt {
         return taxesPaid;
     }
 
-    public void addTaxedArticle(TaxableArticle taxedArticle) {
+    public void addTaxedArticle(TaxedArticle taxedArticle) {
         updateTotalWith(taxedArticle);
         updateTaxesPaidWith(taxedArticle);
         taxedArticles.add(taxedArticle);
     }
 
-    private void updateTaxesPaidWith(TaxableArticle taxedArticle) {
-        Article article = taxedArticle.getArticle();
-        taxesPaid = taxesPaid.add(taxedArticle.getFinalPrice().subtract(article.getPrice()));
+    private void updateTaxesPaidWith(TaxedArticle taxedArticle) {
+        taxesPaid = taxesPaid.add(taxedArticle.getPrice().subtract(taxedArticle.getNonTaxedPrice()));
     }
 
-    private void updateTotalWith(TaxableArticle taxedArticle) {
-        total = total.add(taxedArticle.getFinalPrice());
+    private void updateTotalWith(TaxedArticle taxedArticle) {
+        total = total.add(taxedArticle.getPrice());
     }
 
-    public List<TaxableArticle> getTaxedArticles() {
+    public List<TaxedArticle> getTaxedArticles() {
         return taxedArticles;
     }
 }

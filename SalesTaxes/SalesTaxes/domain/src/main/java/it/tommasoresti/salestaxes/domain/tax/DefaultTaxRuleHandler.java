@@ -3,8 +3,6 @@ package it.tommasoresti.salestaxes.domain.tax;
 import java.util.Arrays;
 import java.util.List;
 
-import it.tommasoresti.salestaxes.domain.article.TaxableArticle;
-
 public class DefaultTaxRuleHandler implements TaxRuleHandler {
 
     private static final List<TaxRuleHandler> handlers = Arrays.asList(
@@ -18,10 +16,10 @@ public class DefaultTaxRuleHandler implements TaxRuleHandler {
     }
 
     @Override
-    public void handle(TaxableArticle taxedArticle) {
+    public void handle(TaxableArticle article) {
         for(TaxRuleHandler handler : handlers) {
-            if(handler.canHandle(taxedArticle))
-                handler.handle(taxedArticle);
+            if(handler.canHandle(article))
+                handler.handle(article);
         }
     }
 }

@@ -5,7 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import it.tommasoresti.salestaxes.domain.SalesTaxes;
+import it.tommasoresti.salestaxes.domain.round.RoundUp5CentsPolicy;
 import it.tommasoresti.salestaxes.domain.tax.DefaultTaxRuleHandler;
+import it.tommasoresti.salestaxes.domain.tax.TaxCalculator;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -16,7 +18,7 @@ public class AcceptanceTest {
 
     @Before
     public void setUp() throws Exception {
-        salesTaxes = new TextualSalesTaxes(new SalesTaxes(new DefaultTaxRuleHandler()));
+        salesTaxes = new TextualSalesTaxes(new SalesTaxes(new DefaultTaxRuleHandler(), new TaxCalculator(new RoundUp5CentsPolicy())));
     }
 
     @Test

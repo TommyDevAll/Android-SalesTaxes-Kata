@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 import it.tommasoresti.salestaxes.domain.article.Article;
 import it.tommasoresti.salestaxes.domain.article.Item;
-import it.tommasoresti.salestaxes.domain.article.TaxableArticle;
+import it.tommasoresti.salestaxes.domain.tax.TaxableArticle;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -19,15 +19,14 @@ public class TaxableArticleTest {
     public void given_an_article_taxed_by_10_percent() throws Exception {
         BigDecimal aPrice = new BigDecimal("100");
         BigDecimal aTaxPercentage = new BigDecimal("10");
-        BigDecimal expectedFinalPrice = new BigDecimal("110.00");
 
         Item food = new Item("food", "chocolate", aPrice);
 
-        TaxableArticle taxedArticle = new TaxableArticle(food);
-        taxedArticle.addTaxPercentage(aTaxPercentage);
+        TaxableArticle taxableArticle = new TaxableArticle(food);
+        taxableArticle.addTaxPercentage(aTaxPercentage);
 
-        assertThat(taxedArticle.getArticle(), CoreMatchers.<Article>is(food));
-        assertThat(taxedArticle.getFinalPrice(), is(equalTo(expectedFinalPrice)));
-        assertThat(taxedArticle.getTaxesPercentage(), is(aTaxPercentage));
+        assertThat(taxableArticle.getArticle(), CoreMatchers.<Article>is(food));
+        assertThat(taxableArticle.getPrice(), is(equalTo(aPrice)));
+        assertThat(taxableArticle.getTaxesPercentage(), is(aTaxPercentage));
     }
 }

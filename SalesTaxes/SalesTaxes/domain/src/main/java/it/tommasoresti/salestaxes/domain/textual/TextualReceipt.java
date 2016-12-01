@@ -3,7 +3,7 @@ package it.tommasoresti.salestaxes.domain.textual;
 import java.util.Locale;
 
 import it.tommasoresti.salestaxes.domain.Receipt;
-import it.tommasoresti.salestaxes.domain.article.TaxableArticle;
+import it.tommasoresti.salestaxes.domain.tax.TaxedArticle;
 
 public class TextualReceipt {
     private String string;
@@ -36,7 +36,7 @@ public class TextualReceipt {
 
     private void addArticlesText(Receipt receipt, StringBuilder builder) {
         boolean first = true;
-        for(TaxableArticle taxedArticle : receipt.getTaxedArticles()) {
+        for(TaxedArticle taxedArticle : receipt.getTaxedArticles()) {
             builder.append(first ? "" : " ");
             builder.append(new TextualArticle(taxedArticle).toString());
             first = false;
