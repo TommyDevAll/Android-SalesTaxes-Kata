@@ -12,7 +12,7 @@ class TextualSalesTaxes {
     private SalesTaxes salesTaxes;
     private final TextualCartFactory splitter;
 
-    public TextualSalesTaxes(SalesTaxes salesTaxes) {
+    TextualSalesTaxes(SalesTaxes salesTaxes) {
         this.salesTaxes = salesTaxes;
         splitter = new TextualCartFactory(new TextualArticleFactory());
     }

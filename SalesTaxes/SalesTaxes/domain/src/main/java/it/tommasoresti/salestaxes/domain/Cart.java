@@ -12,7 +12,7 @@ public class Cart {
         this.articles.add(item);
     }
 
-    public List<Article> getArticles() {
+    List<Article> getArticles() {
         return articles;
     }
 }

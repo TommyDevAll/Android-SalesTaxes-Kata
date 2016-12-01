@@ -2,10 +2,10 @@ package it.tommasoresti.salestaxes.domain.article;
 
 import java.math.BigDecimal;
 
-public class ArticleDecorator implements Article {
+class ArticleDecorator implements Article {
 
     private Article article;
-    public ArticleDecorator(Article article) {
+    ArticleDecorator(Article article) {
         this.article = article;
     }
 
