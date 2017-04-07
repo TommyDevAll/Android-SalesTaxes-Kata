@@ -2,6 +2,7 @@ package it.tommasoresti.salestaxes.domain.article;
 
 import java.math.BigDecimal;
 
+import it.tommasoresti.salestaxes.domain.round.NoRoundingPolicy;
 import it.tommasoresti.salestaxes.domain.round.RoundingPolicy;
 
 public class TaxedArticle extends ArticleDecorator {
@@ -24,6 +25,10 @@ public class TaxedArticle extends ArticleDecorator {
     public static class Factory {
 
         private RoundingPolicy roundingPolicy;
+
+        public Factory() {
+            this.roundingPolicy = new NoRoundingPolicy();
+        }
 
         public Factory(RoundingPolicy roundingPolicy) {
             this.roundingPolicy = roundingPolicy;
