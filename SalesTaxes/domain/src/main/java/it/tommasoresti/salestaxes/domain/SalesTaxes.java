@@ -17,13 +17,13 @@ public class SalesTaxes {
     }
 
     public Receipt of(Cart cart) {
-        Receipt receipt = new Receipt();
+        Receipt.Builder builder = new Receipt.Builder();
         for(Article article : cart.getArticles()) {
             TaxableArticle taxableArticle = new TaxableArticle(article);
             if(taxesRuleHandler.canHandle(taxableArticle))
                 taxableArticle = taxesRuleHandler.handle(taxableArticle);
-            receipt.addTaxedArticle(factory.make(taxableArticle));
+            builder.addTaxedArticle(factory.make(taxableArticle));
         }
-        return receipt;
+        return builder.build();
     }
 }

@@ -37,8 +37,7 @@ public class TextualReceiptTest {
         when(taxedArticle.getDescription()).thenReturn("big bamboo");
         when(taxedArticle.getCategory()).thenReturn("sex toy");
 
-        Receipt receipt = new Receipt();
-        receipt.addTaxedArticle(taxedArticle);
+        Receipt receipt = new Receipt.Builder().addTaxedArticle(taxedArticle).build();
 
         assertThat(new TextualReceipt(receipt, new Round2DecimalPolicy()).toString(), is(equalTo("1 big bamboo: 10.00 Sales Taxes: 2.00 Total: 10.00")));
     }

@@ -12,18 +12,20 @@ public class Receipt {
     private BigDecimal total = new BigDecimal(0);
     private BigDecimal taxesPaid = new BigDecimal(0);
 
+    private Receipt(List<TaxedArticle> articles) {
+        taxedArticles = articles;
+        for(TaxedArticle taxedArticle : taxedArticles) {
+            updateTotalWith(taxedArticle);
+            updateTaxesPaidWith(taxedArticle);
+        }
+    }
+
     public BigDecimal getTotal() {
         return total;
     }
 
     public BigDecimal getTaxesPaid() {
         return taxesPaid;
-    }
-
-    public void addTaxedArticle(TaxedArticle taxedArticle) {
-        updateTotalWith(taxedArticle);
-        updateTaxesPaidWith(taxedArticle);
-        taxedArticles.add(taxedArticle);
     }
 
     private void updateTaxesPaidWith(TaxedArticle taxedArticle) {
@@ -36,5 +38,19 @@ public class Receipt {
 
     public List<TaxedArticle> getTaxedArticles() {
         return taxedArticles;
+    }
+
+    public static class Builder {
+
+        private List<TaxedArticle> articles = new ArrayList<>();
+
+        public Builder addTaxedArticle(TaxedArticle taxedArticle) {
+            articles.add(taxedArticle);
+            return this;
+        }
+
+        public Receipt build() {
+            return new Receipt(articles);
+        }
     }
 }

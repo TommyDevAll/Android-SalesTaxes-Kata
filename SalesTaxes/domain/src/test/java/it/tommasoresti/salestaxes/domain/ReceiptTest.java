@@ -21,12 +21,13 @@ public class ReceiptTest {
 
     @Test
     public void given_first_input_case() throws Exception {
-        Receipt receipt = new Receipt();
+        Receipt.Builder builder = new Receipt.Builder();
 
-        addItemAndTaxPercentage(receipt, "book", 12.49f, 0);
-        addItemAndTaxPercentage(receipt, "other", 14.99f, 10);
-        addItemAndTaxPercentage(receipt, "food", 0.85f, 0);
+        addItemAndTaxPercentage(builder, "book", 12.49f, 0);
+        addItemAndTaxPercentage(builder, "other", 14.99f, 10);
+        addItemAndTaxPercentage(builder, "food", 0.85f, 0);
 
+        Receipt receipt = builder.build();
         assertThat(twoDecimal(receipt.getTaxedArticles().get(1).getPrice()), is(twoDecimal(new BigDecimal(16.49))));
         assertThat(twoDecimal(receipt.getTaxesPaid()), is(twoDecimal(new BigDecimal(1.5))));
         assertThat(twoDecimal(receipt.getTotal()), is(twoDecimal(new BigDecimal(29.83))));
@@ -34,11 +35,12 @@ public class ReceiptTest {
 
     @Test
     public void given_second_input_case() throws Exception {
-        Receipt receipt = new Receipt();
+        Receipt.Builder builder = new Receipt.Builder();
 
-        addImportedItemAndTaxPercentage(receipt, "food", 10f, 5);
-        addImportedItemAndTaxPercentage(receipt, "other", 47.5f, 15);
+        addImportedItemAndTaxPercentage(builder, "food", 10f, 5);
+        addImportedItemAndTaxPercentage(builder, "other", 47.5f, 15);
 
+        Receipt receipt = builder.build();
         List<TaxedArticle> taxedArticles = receipt.getTaxedArticles();
         assertThat(twoDecimal(taxedArticles.get(0).getPrice()), is(twoDecimal(new BigDecimal(10.5))));
         assertThat(twoDecimal(taxedArticles.get(1).getPrice()), is(twoDecimal(new BigDecimal(54.65))));
@@ -46,23 +48,23 @@ public class ReceiptTest {
         assertThat(twoDecimal(receipt.getTotal()), is(twoDecimal(new BigDecimal(65.15))));
     }
 
-    private void addImportedItemAndTaxPercentage(Receipt receipt, String category, float price, int percentage) {
+    private void addImportedItemAndTaxPercentage(Receipt.Builder receiptBuilder, String category, float price, int percentage) {
         TaxableArticle article = new TaxableArticle(new Imported(buildItem(category, price)));
-        setTaxPercentagAndAddToReceipt(receipt, percentage, article);
+        setTaxPercentagAndAddToReceipt(receiptBuilder, percentage, article);
     }
 
-    private void addItemAndTaxPercentage(Receipt receipt, String category, float price, int percentage) {
+    private void addItemAndTaxPercentage(Receipt.Builder receiptBuilder, String category, float price, int percentage) {
         TaxableArticle article = new TaxableArticle(buildItem(category, price));
-        setTaxPercentagAndAddToReceipt(receipt, percentage, article);
+        setTaxPercentagAndAddToReceipt(receiptBuilder, percentage, article);
     }
 
     private Item buildItem(String category, float price) {
         return new Item(category, "", new BigDecimal(price));
     }
 
-    private void setTaxPercentagAndAddToReceipt(Receipt receipt, int percentage, TaxableArticle article) {
+    private void setTaxPercentagAndAddToReceipt(Receipt.Builder builder, int percentage, TaxableArticle article) {
         article = article.addTaxPercentage(new BigDecimal(percentage));
-        receipt.addTaxedArticle(factory.make(article));
+        builder.addTaxedArticle(factory.make(article));
     }
 
 }
