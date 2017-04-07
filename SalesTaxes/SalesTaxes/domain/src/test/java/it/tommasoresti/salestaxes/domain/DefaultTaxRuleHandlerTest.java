@@ -30,28 +30,28 @@ public class DefaultTaxRuleHandlerTest {
     @Test
     public void given_a_food() throws Exception {
         TaxableArticle taxedArticle = new TaxableArticle(new Item("food", "chocolate bar", aPrice));
-        taxesRuleHandler.handle(taxedArticle);
+        taxedArticle = taxesRuleHandler.handle(taxedArticle);
         assertThat(taxedArticle.getTaxesPercentage(), is(new BigDecimal(0f)));
     }
 
     @Test
     public void given_a_perfume() throws Exception {
         TaxableArticle taxedArticle = new TaxableArticle(new Item("other", "perfume", aPrice));
-        taxesRuleHandler.handle(taxedArticle);
+        taxedArticle = taxesRuleHandler.handle(taxedArticle);
         assertThat(taxedArticle.getTaxesPercentage(), is(new BigDecimal(10f)));
     }
 
     @Test
     public void given_an_imported_perfume() throws Exception {
         TaxableArticle taxedArticle = new TaxableArticle(new Imported(new Item("other", "perfume", aPrice)));
-        taxesRuleHandler.handle(taxedArticle);
+        taxedArticle = taxesRuleHandler.handle(taxedArticle);
         assertThat(taxedArticle.getTaxesPercentage(), is(new BigDecimal(15f)));
     }
 
     @Test
     public void given_an_imported_box_of_headache_pills() throws Exception {
         TaxableArticle taxedArticle = new TaxableArticle(new Imported(new Item("medical", "box of headache pills", aPrice)));
-        taxesRuleHandler.handle(taxedArticle);
+        taxedArticle = taxesRuleHandler.handle(taxedArticle);
         assertThat(taxedArticle.getTaxesPercentage(), is(new BigDecimal(5f)));
     }
 }

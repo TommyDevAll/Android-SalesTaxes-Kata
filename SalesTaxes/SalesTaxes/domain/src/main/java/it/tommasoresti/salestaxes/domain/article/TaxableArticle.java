@@ -9,9 +9,13 @@ public class TaxableArticle extends ArticleDecorator {
     public TaxableArticle(Article article) {
         super(article);
     }
+    public TaxableArticle(Article article, BigDecimal taxesPercentage) {
+        super(article);
+        this.taxesPercentage = taxesPercentage;
+    }
 
-    public void addTaxPercentage(BigDecimal taxesPercentage) {
-        this.taxesPercentage = this.taxesPercentage.add(taxesPercentage);
+    public TaxableArticle addTaxPercentage(BigDecimal taxesPercentage) {
+        return new TaxableArticle(getArticle(), this.taxesPercentage.add(taxesPercentage));
     }
 
     public BigDecimal getTaxesPercentage() {

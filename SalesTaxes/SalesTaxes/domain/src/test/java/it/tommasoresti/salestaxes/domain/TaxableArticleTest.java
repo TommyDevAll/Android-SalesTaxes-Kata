@@ -23,7 +23,7 @@ public class TaxableArticleTest {
         Item food = new Item("food", "chocolate", aPrice);
 
         TaxableArticle taxableArticle = new TaxableArticle(food);
-        taxableArticle.addTaxPercentage(aTaxPercentage);
+        taxableArticle = taxableArticle.addTaxPercentage(aTaxPercentage);
 
         assertThat(taxableArticle.getArticle(), CoreMatchers.<Article>is(food));
         assertThat(taxableArticle.getPrice(), is(equalTo(aPrice)));

@@ -61,7 +61,7 @@ public class ReceiptTest {
     }
 
     private void setTaxPercentagAndAddToReceipt(Receipt receipt, int percentage, TaxableArticle article) {
-        article.addTaxPercentage(new BigDecimal(percentage));
+        article = article.addTaxPercentage(new BigDecimal(percentage));
         receipt.addTaxedArticle(factory.make(article));
     }
 

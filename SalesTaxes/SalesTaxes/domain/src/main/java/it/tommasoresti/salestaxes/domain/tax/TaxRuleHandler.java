@@ -4,5 +4,5 @@ import it.tommasoresti.salestaxes.domain.article.TaxableArticle;
 
 public interface TaxRuleHandler {
     boolean canHandle(TaxableArticle article);
-    void handle(TaxableArticle article);
+    TaxableArticle handle(TaxableArticle article);
 }

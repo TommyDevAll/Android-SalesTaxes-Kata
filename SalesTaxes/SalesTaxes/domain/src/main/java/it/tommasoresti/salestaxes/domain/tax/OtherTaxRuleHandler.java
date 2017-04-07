@@ -14,7 +14,7 @@ public class OtherTaxRuleHandler implements TaxRuleHandler {
     }
 
     @Override
-    public void handle(TaxableArticle article) {
-        article.addTaxPercentage(OTHER_ARTICLES_TAXES);
+    public TaxableArticle handle(TaxableArticle article) {
+        return article.addTaxPercentage(OTHER_ARTICLES_TAXES);
     }
 }

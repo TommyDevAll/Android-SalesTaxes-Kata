@@ -14,7 +14,7 @@ public class ImportedTaxRuleHandler implements TaxRuleHandler {
     }
 
     @Override
-    public void handle(TaxableArticle article) {
-        article.addTaxPercentage(IMPORTED_ARTICLES_TAXES);
+    public TaxableArticle handle(TaxableArticle article) {
+        return article.addTaxPercentage(IMPORTED_ARTICLES_TAXES);
     }
 }

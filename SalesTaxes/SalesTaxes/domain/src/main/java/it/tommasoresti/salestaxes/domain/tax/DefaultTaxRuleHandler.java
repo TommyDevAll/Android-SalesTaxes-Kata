@@ -18,10 +18,11 @@ public class DefaultTaxRuleHandler implements TaxRuleHandler {
     }
 
     @Override
-    public void handle(TaxableArticle article) {
+    public TaxableArticle handle(TaxableArticle article) {
         for(TaxRuleHandler handler : handlers) {
             if(handler.canHandle(article))
-                handler.handle(article);
+                article = handler.handle(article);
         }
+        return article;
     }
 }
