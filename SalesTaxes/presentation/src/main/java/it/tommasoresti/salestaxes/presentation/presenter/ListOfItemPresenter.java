@@ -27,6 +27,10 @@ public class ListOfItemPresenter extends Presenter<ListOfItemView> {
         });
     }
 
+    public void onItemSelected(Item item) {
+        getView().showItemSelection(item);
+    }
+
     @Override
     public void onResume() {
 
