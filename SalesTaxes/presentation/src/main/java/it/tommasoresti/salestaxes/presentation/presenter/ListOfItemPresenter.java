@@ -22,13 +22,13 @@ public class ListOfItemPresenter extends Presenter<ListOfItemView> {
         repository.getItems().whenReady(new FutureCallback<List<Item>>() {
             @Override
             public void callback(List<Item> items) {
-                getView().showItems(items);
+                view.showItems(items);
             }
         });
     }
 
     public void onItemSelected(Item item) {
-        getView().showItemSelection(item);
+        view.showItemSelection(item);
     }
 
     @Override
