@@ -3,7 +3,7 @@ package it.tommasoresti.salestaxes.presentation.kit.concurrency;
 public abstract class ObservableListener<T> implements Runnable {
     private Observable<T> observable;
 
-    protected void attach(Observable<T> observable) {
+    void attach(Observable<T> observable) {
         this.observable = observable;
     }
 
