@@ -7,17 +7,17 @@ public class Observable<T> {
     private T value;
     private boolean completed = false;
 
-    private ObservableListener<T> onChangeRunnable;
-    private Executor onChangeExecutor;
+    private ObservableListener<T> onSetRunnable;
+    private Executor onSetExecutor;
 
-    public void onChange(ObservableListener<T> listener) {
-        onChange(listener, null);
+    public void onSet(ObservableListener<T> listener) {
+        onSet(listener, null);
     }
 
-    public void onChange(ObservableListener<T> listener, Executor executor) {
-        onChangeRunnable = listener;
-        onChangeExecutor = executor;
-        onChangeRunnable.attach(this);
+    public void onSet(ObservableListener<T> listener, Executor executor) {
+        onSetRunnable = listener;
+        onSetExecutor = executor;
+        onSetRunnable.attach(this);
         if(completed) notifyChange();
     }
 
@@ -46,13 +46,13 @@ public class Observable<T> {
     }
 
     private void notifyChange() {
-        if(onChangeRunnable != null) {
-            if(onChangeExecutor != null)
-                onChangeExecutor.execute(onChangeRunnable);
+        if(onSetRunnable != null) {
+            if(onSetExecutor != null)
+                onSetExecutor.execute(onSetRunnable);
             else
-                onChangeRunnable.run();
+                onSetRunnable.run();
         }
-        onChangeRunnable = null;
+        onSetRunnable = null;
     }
 
     private final class Lock {}

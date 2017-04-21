@@ -19,7 +19,7 @@ public class ListOfItemPresenter extends Presenter<ListOfItemView> {
 
     @Override
     public void onStart() {
-        repository.getItems().onChange(new ObservableListener<List<Item>>() {
+        repository.getItems().onSet(new ObservableListener<List<Item>>() {
             @Override
             public void callback(List<Item> items) {
                 view.showItems(items);
