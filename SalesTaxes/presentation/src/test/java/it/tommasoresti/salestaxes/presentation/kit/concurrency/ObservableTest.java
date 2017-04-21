@@ -26,8 +26,8 @@ public class ObservableTest {
     }
 
     private class FakeObservableListener extends ObservableListener<String> {
-        public boolean called = false;
-        public String value;
+        boolean called = false;
+        String value;
 
         @Override
         public void callback(String data) {
